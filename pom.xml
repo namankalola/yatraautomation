@@ -13,10 +13,12 @@
   </properties>
   <url>http://maven.apache.org</url>
   <dependencies>
+    <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.25.0</version>
+      <version>4.45.0</version>
+      <scope>compile</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.testng/testng -->
     <dependency>

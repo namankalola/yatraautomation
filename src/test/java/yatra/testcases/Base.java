@@ -16,7 +16,7 @@ public class Base {
 
     @BeforeMethod
     @Parameters("browser")
-    public void setup(@Optional("chrome") String browser) {
+    public void setup(@Optional("edge") String browser) {
         driver = DriverManager.initializeWebdriver(browser);
         driver.manage().window().maximize();
     }
