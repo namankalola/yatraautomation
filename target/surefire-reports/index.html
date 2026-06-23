@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -55,7 +55,7 @@
                 </li>
                 <li>
                   <a href="#" panel-name="testlist-Suite" class="navigator-link ">
-                    <span class="test-stats">2 tests</span>
+                    <span class="test-stats">3 tests</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">4 methods, 3 failed,   1 passed</span>
+                    <span class="method-stats">6 methods, 2 failed,   4 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -111,11 +111,6 @@
                         <a href="#" panel-name="suite-Suite" title="yatra.testcases.YatraSearchFlights" class="method navigator-link" hash-for-method="yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)">yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="yatra.testcases.YatraSearchFlights" class="method navigator-link" hash-for-method="yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)">yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                   <li>
@@ -127,7 +122,22 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="yatra.testcases.YatraSearchFlights" class="method navigator-link" hash-for-method="yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)">yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="yatra.testcases.YatraSearchFlights" class="method navigator-link" hash-for-method="yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...)">yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="yatra.testcases.YatraSearchFlights" class="method navigator-link" hash-for-method="yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...)">yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="yatra.testcases.YatraSearchFlights" class="method navigator-link" hash-for-method="yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)">yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -154,21 +164,28 @@
                   </a> <!-- yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...) -->
                   <span class="method-name">yatra_search_flight</span>
                   <span class="parameters">({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=today+10, return=today+month})</span>
-                  <div class="stack-trace">java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
-	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
-	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
-	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
-	at java.base/java.util.Objects.checkIndex(Objects.java:359)
-	at java.base/java.util.ArrayList.get(ArrayList.java:427)
-	at yatra.pages.YatraHomePage.navigateToMonth(YatraHomePage.java:86)
-	at yatra.pages.YatraHomePage.selectDate(YatraHomePage.java:79)
-	at yatra.pages.YatraHomePage.selectReturnDate(YatraHomePage.java:68)
-	at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:64)
+                  <div class="stack-trace">java.lang.RuntimeException: Element not found or not visible: By.xpath: //div[@class=&apos;month-name full&apos; and contains(text(),&apos;Jul 2026&apos;)]/..//span[@class=&apos;full date-val&apos; and text()=&apos;5&apos;]
+	at utils.Element.getElement(Element.java:47)
+	at utils.Element.click(Element.java:34)
+	at yatra.pages.YatraSearchResultsPage.clickDate(YatraSearchResultsPage.java:107)
+	at yatra.pages.YatraSearchResultsPage.getFareForNextNDays(YatraSearchResultsPage.java:75)
+	at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:71)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.xpath: //div[@class=&apos;month-name full&apos; and contains(text(),&apos;Jul 2026&apos;)]/..//span[@class=&apos;full date-val&apos; and text()=&apos;5&apos;], but... org.openqa.selenium.NoSuchElementException: Unable to locate element: //div[@class=&apos;month-name full&apos; and contains(text(),&apos;Jul 2026&apos;)]/..//span[@class=&apos;full date-val&apos; and text()=&apos;5&apos;].
+(tried for 5 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.45.0&apos;, revision: &apos;cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.15&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 152.0.1, moz:accessibilityChecks: false, moz:buildID: 20260617213557, moz:geckodriverVersion: 0.37.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 2892, moz:profile: C:\Users\BAPS\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Session ID: 4bb51d5c-b78d-4588-a3d1-df7537492623
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at utils.Element.getElement(Element.java:45)
+	... 26 more
 ... Removed 17 stack frames
 </div> <!-- stack-trace -->
                   <em>
@@ -181,72 +198,22 @@
                   </a> <!-- yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...) -->
                   <span class="method-name">yatra_search_flight</span>
                   <span class="parameters">({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, return=today+9})</span>
-                  <div class="stack-trace">org.openqa.selenium.ElementNotInteractableException: Element &lt;i class=&quot;ytfi-arrow-right cursor-pointer&quot;&gt; could not be scrolled into view
-Build info: version: &apos;4.25.0&apos;, revision: &apos;8a8aea2337&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.15&apos;
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [01b9d746-fd69-4bd9-a45e-b03a68bbbaca, clickElement {id=38a91280-3784-4503-af7b-280a4e1374ef}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 150.0.1, moz:accessibilityChecks: false, moz:buildID: 20260427013024, moz:geckodriverVersion: 0.37.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 12528, moz:profile: C:\Users\BAPS\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Element: [[FirefoxDriver: firefox on windows (01b9d746-fd69-4bd9-a45e-b03a68bbbaca)] -&gt; xpath: //div[contains(@class,&apos;datepicker-inner full&apos;)]/i[@class=&apos;ytfi-arrow-right cursor-pointer&apos;]]
-Session ID: 01b9d746-fd69-4bd9-a45e-b03a68bbbaca
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
-	at yatra.pages.YatraSearchResultsPage.navigateToMonth(YatraSearchResultsPage.java:85)
-	at yatra.pages.YatraSearchResultsPage.getFareForNextNDays(YatraSearchResultsPage.java:70)
-	at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:71)
+                  <div class="stack-trace">java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:359)
+	at java.base/java.util.ArrayList.get(ArrayList.java:427)
+	at yatra.pages.YatraHomePage.navigateToMonth(YatraHomePage.java:86)
+	at yatra.pages.YatraHomePage.selectDate(YatraHomePage.java:79)
+	at yatra.pages.YatraHomePage.selectDepartureDate(YatraHomePage.java:61)
+	at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:63)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:842)
-... Removed 22 stack frames
-</div> <!-- stack-trace -->
-                  <em>
-(Yatra - Search flight and get cheapest flight for given n days)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)">
-                  </a> <!-- yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...) -->
-                  <span class="method-name">yatra_search_flight</span>
-                  <span class="parameters">({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, return=today+9})</span>
-                  <div class="stack-trace">org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
-  (Session info: chrome=149.0.7827.156)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
-Build info: version: &apos;4.25.0&apos;, revision: &apos;8a8aea2337&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.15&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [19cd61fa45483b85a593ec01958fae48, getElementText {id=f.AEFBD2736F38EF3A3B15F0D3E0C729E8.d.91F7C4188798B5CA0A77F3612A2CE0B4.e.7005}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 149.0.7827.156, chrome: {chromedriverVersion: 149.0.7827.155 (07b52360cc1..., userDataDir: C:\Users\BAPS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63663}, goog:processID: 13544, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63663/devtoo..., se:cdpVersion: 149.0.7827.156, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (19cd61fa45483b85a593ec01958fae48)] -&gt; xpath: //*[contains(@ng-show,&apos;flt.totalFare&apos;)]]
-Session ID: 19cd61fa45483b85a593ec01958fae48
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-	at org.openqa.selenium.remote.RemoteWebElement.getText(RemoteWebElement.java:191)
-	at utils.Element.getText(Element.java:88)
-	at yatra.pages.YatraSearchResultsPage.getTotalFare(YatraSearchResultsPage.java:44)
-	at yatra.pages.YatraSearchResultsPage.getFareForNextNDays(YatraSearchResultsPage.java:75)
-	at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:71)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:842)
-... Removed 22 stack frames
+... Removed 17 stack frames
 </div> <!-- stack-trace -->
                   <em>
 (Yatra - Search flight and get cheapest flight for given n days)                  </em>
@@ -262,10 +229,40 @@ Session ID: 19cd61fa45483b85a593ec01958fae48
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
+                  <a name="yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)">
+                  </a> <!-- yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...) -->
+                  <span class="method-name">yatra_search_flight</span>
+                  <span class="parameters">({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, return=today+9})</span>
+                  <em>
+(Yatra - Search flight and get cheapest flight for given n days)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...)">
                   </a> <!-- yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...) -->
                   <span class="method-name">yatra_search_flight</span>
                   <span class="parameters">({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=today+10, return=today+month})</span>
+                  <em>
+(Yatra - Search flight and get cheapest flight for given n days)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...)">
+                  </a> <!-- yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...) -->
+                  <span class="method-name">yatra_search_flight</span>
+                  <span class="parameters">({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=today+10, return=today+month})</span>
+                  <em>
+(Yatra - Search flight and get cheapest flight for given n days)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)">
+                  </a> <!-- yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...) -->
+                  <span class="method-name">yatra_search_flight</span>
+                  <span class="parameters">({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, return=today+9})</span>
                   <em>
 (Yatra - Search flight and get cheapest flight for given n days)                  </em>
                 </div> <!-- method-content -->
@@ -294,6 +291,12 @@ Session ID: 19cd61fa45483b85a593ec01958fae48
       &lt;class name=&quot;yatra.testcases.YatraSearchFlights&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- firefox --&gt;
+  &lt;test thread-count=&quot;2&quot; parallel=&quot;tests&quot; name=&quot;edge&quot; verbose=&quot;0&quot;&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;edge&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;yatra.testcases.YatraSearchFlights&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- edge --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -309,6 +312,9 @@ Session ID: 19cd61fa45483b85a593ec01958fae48
               </li>
               <li>
                 <span class="test-name">firefox (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">edge (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -334,23 +340,31 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(4);
+data.addRows(6);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'yatra_search_flight')
 data.setCell(0, 2, 'yatra.testcases.YatraSearchFlights')
-data.setCell(0, 3, 109024);
+data.setCell(0, 3, 128006);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'yatra_search_flight')
 data.setCell(1, 2, 'yatra.testcases.YatraSearchFlights')
-data.setCell(1, 3, 99003);
+data.setCell(1, 3, 100742);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'yatra_search_flight')
 data.setCell(2, 2, 'yatra.testcases.YatraSearchFlights')
-data.setCell(2, 3, 61904);
+data.setCell(2, 3, 93898);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'yatra_search_flight')
 data.setCell(3, 2, 'yatra.testcases.YatraSearchFlights')
-data.setCell(3, 3, 19719);
+data.setCell(3, 3, 89127);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'yatra_search_flight')
+data.setCell(4, 2, 'yatra.testcases.YatraSearchFlights')
+data.setCell(4, 3, 71903);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'yatra_search_flight')
+data.setCell(5, 2, 'yatra.testcases.YatraSearchFlights')
+data.setCell(5, 3, 17433);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
@@ -391,50 +405,72 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)</span>
-                <span class="method-start">3470 ms</span>
+                <span class="method-start">2956 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)</span>
-                <span class="method-start">11152 ms</span>
+                <span class="method-start">9407 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=yatra_search_flight status=FAILURE method=YatraSearchFlights.yatra_search_flight(ja...)</span>
-                <span class="method-start">73085 ms</span>
+                <span class="method-start">26855 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup(firefox)</span>
-                <span class="method-start">103631 ms</span>
+                <span class="method-start">29185 ms</span>
               </div> <!-- configuration-method before -->
-              <div class="configuration-method after">
-                <span class="method-name">tearDown([TestResult name=yatra_search_flight status=FAILURE method=YatraSearchFlights.yatra_search_flight(ja...)</span>
-                <span class="method-start">112503 ms</span>
-              </div> <!-- configuration-method after -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...)</span>
-                <span class="method-start">114784 ms</span>
+                <span class="method-start">35240 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=yatra_search_flight status=SUCCESS method=YatraSearchFlights.yatra_search_flight(ja...)</span>
+                <span class="method-start">103699 ms</span>
+              </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setup(chrome)</span>
-                <span class="method-start">124986 ms</span>
+                <span class="method-start">104149 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...)</span>
-                <span class="method-start">128133 ms</span>
+                <span class="method-start">105472 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=yatra_search_flight status=FAILURE method=YatraSearchFlights.yatra_search_flight(ja...)</span>
-                <span class="method-start">134506 ms</span>
+                <span class="method-start">107146 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setup(edge)</span>
+                <span class="method-start">109796 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">yatra_search_flight({cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, ret...)</span>
+                <span class="method-start">112833 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=yatra_search_flight status=SUCCESS method=YatraSearchFlights.yatra_search_flight(ja...)</span>
+                <span class="method-start">206733 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setup(edge)</span>
+                <span class="method-start">207874 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">yatra_search_flight({cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=toda...)</span>
+                <span class="method-start">210849 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=yatra_search_flight status=SUCCESS method=YatraSearchFlights.yatra_search_flight(ja...)</span>
+                <span class="method-start">233478 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown([TestResult name=yatra_search_flight status=SUCCESS method=YatraSearchFlights.yatra_search_flight(ja...)</span>
-                <span class="method-start">227139 ms</span>
+                <span class="method-start">299977 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

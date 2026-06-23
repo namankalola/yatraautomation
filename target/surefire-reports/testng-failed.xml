@@ -13,16 +13,4 @@
       </class> <!-- yatra.testcases.YatraSearchFlights -->
     </classes>
   </test> <!-- firefox(failed) -->
-  <test thread-count="2" parallel="tests" name="Chrome(failed)" verbose="0">
-    <parameter name="browser" value="chrome"/>
-    <classes>
-      <class name="yatra.testcases.YatraSearchFlights">
-        <methods>
-          <include name="yatra_search_flight" invocation-numbers="0"/>
-          <include name="tearDown"/>
-          <include name="setup"/>
-        </methods>
-      </class> <!-- yatra.testcases.YatraSearchFlights -->
-    </classes>
-  </test> <!-- Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

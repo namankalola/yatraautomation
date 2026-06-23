@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="1" failed="3" skipped="0">
+<testng-results ignored="0" total="6" passed="4" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-06-23T09:11:50 IST" name="Suite" finished-at="2026-06-23T09:15:40 IST" duration-ms="229695">
+  <suite started-at="2026-06-23T12:17:25 IST" name="Suite" finished-at="2026-06-23T12:22:26 IST" duration-ms="300942">
     <groups>
     </groups>
-    <test started-at="2026-06-23T09:11:50 IST" name="firefox" finished-at="2026-06-23T09:14:08 IST" duration-ms="138307">
+    <test started-at="2026-06-23T12:17:25 IST" name="firefox" finished-at="2026-06-23T12:19:15 IST" duration-ms="109799">
       <class name="yatra.testcases.YatraSearchFlights">
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:yatra.testcases.YatraSearchFlights@4f18837a]" started-at="2026-06-23T09:11:50 IST" name="setup" finished-at="2026-06-23T09:12:01 IST" duration-ms="11152" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:yatra.testcases.YatraSearchFlights@3bb9a3ff]" started-at="2026-06-23T12:17:26 IST" name="setup" finished-at="2026-06-23T12:17:35 IST" duration-ms="9407" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -18,106 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@4f18837a]" started-at="2026-06-23T09:12:01 IST" name="yatra_search_flight" description="Yatra - Search flight and get cheapest flight for given n days" data-provider="flightSearchData" finished-at="2026-06-23T09:13:03 IST" duration-ms="61904" status="FAIL">
+        <test-method signature="yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@3bb9a3ff]" started-at="2026-06-23T12:17:35 IST" name="yatra_search_flight" description="Yatra - Search flight and get cheapest flight for given n days" data-provider="flightSearchData" finished-at="2026-06-23T12:17:52 IST" duration-ms="17433" status="FAIL">
           <params>
             <param index="0">
               <value>
                 <![CDATA[{cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, return=today+9}]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.ElementNotInteractableException">
-            <message>
-              <![CDATA[Element <i class="ytfi-arrow-right cursor-pointer"> could not be scrolled into view
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.15'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [01b9d746-fd69-4bd9-a45e-b03a68bbbaca, clickElement {id=38a91280-3784-4503-af7b-280a4e1374ef}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 150.0.1, moz:accessibilityChecks: false, moz:buildID: 20260427013024, moz:geckodriverVersion: 0.37.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 12528, moz:profile: C:\Users\BAPS\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Element: [[FirefoxDriver: firefox on windows (01b9d746-fd69-4bd9-a45e-b03a68bbbaca)] -> xpath: //div[contains(@class,'datepicker-inner full')]/i[@class='ytfi-arrow-right cursor-pointer']]
-Session ID: 01b9d746-fd69-4bd9-a45e-b03a68bbbaca]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementNotInteractableException: Element <i class="ytfi-arrow-right cursor-pointer"> could not be scrolled into view
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.15'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Command: [01b9d746-fd69-4bd9-a45e-b03a68bbbaca, clickElement {id=38a91280-3784-4503-af7b-280a4e1374ef}]
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 150.0.1, moz:accessibilityChecks: false, moz:buildID: 20260427013024, moz:geckodriverVersion: 0.37.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 12528, moz:profile: C:\Users\BAPS\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
-Element: [[FirefoxDriver: firefox on windows (01b9d746-fd69-4bd9-a45e-b03a68bbbaca)] -> xpath: //div[contains(@class,'datepicker-inner full')]/i[@class='ytfi-arrow-right cursor-pointer']]
-Session ID: 01b9d746-fd69-4bd9-a45e-b03a68bbbaca
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
-at yatra.pages.YatraSearchResultsPage.navigateToMonth(YatraSearchResultsPage.java:85)
-at yatra.pages.YatraSearchResultsPage.getFareForNextNDays(YatraSearchResultsPage.java:70)
-at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:71)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:739)
-at org.testng.TestRunner.run(TestRunner.java:614)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
-at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
-at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-at java.base/java.lang.Thread.run(Thread.java:842)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.ElementNotInteractableException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- yatra_search_flight -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:yatra.testcases.YatraSearchFlights@4f18837a]" started-at="2026-06-23T09:13:03 IST" name="tearDown" finished-at="2026-06-23T09:13:34 IST" duration-ms="30544" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=yatra_search_flight status=FAILURE method=YatraSearchFlights.yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@4f18837a] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:yatra.testcases.YatraSearchFlights@4f18837a]" started-at="2026-06-23T09:13:34 IST" name="setup" finished-at="2026-06-23T09:13:45 IST" duration-ms="11153" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[firefox]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@4f18837a]" started-at="2026-06-23T09:13:45 IST" name="yatra_search_flight" description="Yatra - Search flight and get cheapest flight for given n days" data-provider="flightSearchData" finished-at="2026-06-23T09:14:05 IST" duration-ms="19719" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[{cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=today+10, return=today+month}]]>
               </value>
             </param>
           </params>
@@ -134,8 +39,8 @@ at java.base/java.util.Objects.checkIndex(Objects.java:359)
 at java.base/java.util.ArrayList.get(ArrayList.java:427)
 at yatra.pages.YatraHomePage.navigateToMonth(YatraHomePage.java:86)
 at yatra.pages.YatraHomePage.selectDate(YatraHomePage.java:79)
-at yatra.pages.YatraHomePage.selectReturnDate(YatraHomePage.java:68)
-at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:64)
+at yatra.pages.YatraHomePage.selectDepartureDate(YatraHomePage.java:61)
+at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:63)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -164,80 +69,45 @@ at java.base/java.lang.Thread.run(Thread.java:842)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- yatra_search_flight -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:yatra.testcases.YatraSearchFlights@4f18837a]" started-at="2026-06-23T09:14:05 IST" name="tearDown" finished-at="2026-06-23T09:14:08 IST" duration-ms="3688" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:yatra.testcases.YatraSearchFlights@3bb9a3ff]" started-at="2026-06-23T12:17:52 IST" name="tearDown" finished-at="2026-06-23T12:17:55 IST" duration-ms="2329" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=yatra_search_flight status=FAILURE method=YatraSearchFlights.yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@4f18837a] output={null}]]]>
+                <![CDATA[[TestResult name=yatra_search_flight status=FAILURE method=YatraSearchFlights.yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@3bb9a3ff] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- yatra.testcases.YatraSearchFlights -->
-    </test> <!-- firefox -->
-    <test started-at="2026-06-23T09:11:50 IST" name="Chrome" finished-at="2026-06-23T09:15:40 IST" duration-ms="229695">
-      <class name="yatra.testcases.YatraSearchFlights">
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:yatra.testcases.YatraSearchFlights@5c30a9b0]" started-at="2026-06-23T09:11:50 IST" name="setup" finished-at="2026-06-23T09:11:54 IST" duration-ms="3466" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:yatra.testcases.YatraSearchFlights@3bb9a3ff]" started-at="2026-06-23T12:17:55 IST" name="setup" finished-at="2026-06-23T12:18:01 IST" duration-ms="6055" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[chrome]]>
+                <![CDATA[firefox]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@5c30a9b0]" started-at="2026-06-23T09:11:54 IST" name="yatra_search_flight" description="Yatra - Search flight and get cheapest flight for given n days" data-provider="flightSearchData" finished-at="2026-06-23T09:13:43 IST" duration-ms="109024" status="FAIL">
+        <test-method signature="yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@3bb9a3ff]" started-at="2026-06-23T12:18:01 IST" name="yatra_search_flight" description="Yatra - Search flight and get cheapest flight for given n days" data-provider="flightSearchData" finished-at="2026-06-23T12:19:13 IST" duration-ms="71903" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, return=today+9}]]>
+                <![CDATA[{cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=today+10, return=today+month}]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.StaleElementReferenceException">
+          <exception class="java.lang.RuntimeException">
             <message>
-              <![CDATA[stale element reference: stale element not found
-  (Session info: chrome=149.0.7827.156)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.15'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [19cd61fa45483b85a593ec01958fae48, getElementText {id=f.AEFBD2736F38EF3A3B15F0D3E0C729E8.d.91F7C4188798B5CA0A77F3612A2CE0B4.e.7005}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 149.0.7827.156, chrome: {chromedriverVersion: 149.0.7827.155 (07b52360cc1..., userDataDir: C:\Users\BAPS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63663}, goog:processID: 13544, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63663/devtoo..., se:cdpVersion: 149.0.7827.156, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (19cd61fa45483b85a593ec01958fae48)] -> xpath: //*[contains(@ng-show,'flt.totalFare')]]
-Session ID: 19cd61fa45483b85a593ec01958fae48]]>
+              <![CDATA[Element not found or not visible: By.xpath: //div[@class='month-name full' and contains(text(),'Jul 2026')]/..//span[@class='full date-val' and text()='5']]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
-  (Session info: chrome=149.0.7827.156)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
-Build info: version: '4.25.0', revision: '8a8aea2337'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.15'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [19cd61fa45483b85a593ec01958fae48, getElementText {id=f.AEFBD2736F38EF3A3B15F0D3E0C729E8.d.91F7C4188798B5CA0A77F3612A2CE0B4.e.7005}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 149.0.7827.156, chrome: {chromedriverVersion: 149.0.7827.155 (07b52360cc1..., userDataDir: C:\Users\BAPS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63663}, goog:processID: 13544, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63663/devtoo..., se:cdpVersion: 149.0.7827.156, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (19cd61fa45483b85a593ec01958fae48)] -> xpath: //*[contains(@ng-show,'flt.totalFare')]]
-Session ID: 19cd61fa45483b85a593ec01958fae48
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-at org.openqa.selenium.remote.RemoteWebElement.getText(RemoteWebElement.java:191)
-at utils.Element.getText(Element.java:88)
-at yatra.pages.YatraSearchResultsPage.getTotalFare(YatraSearchResultsPage.java:44)
+              <![CDATA[java.lang.RuntimeException: Element not found or not visible: By.xpath: //div[@class='month-name full' and contains(text(),'Jul 2026')]/..//span[@class='full date-val' and text()='5']
+at utils.Element.getElement(Element.java:47)
+at utils.Element.click(Element.java:34)
+at yatra.pages.YatraSearchResultsPage.clickDate(YatraSearchResultsPage.java:107)
 at yatra.pages.YatraSearchResultsPage.getFareForNextNDays(YatraSearchResultsPage.java:75)
 at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:71)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -262,24 +132,39 @@ at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
 at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.xpath: //div[@class='month-name full' and contains(text(),'Jul 2026')]/..//span[@class='full date-val' and text()='5'], but... org.openqa.selenium.NoSuchElementException: Unable to locate element: //div[@class='month-name full' and contains(text(),'Jul 2026')]/..//span[@class='full date-val' and text()='5'].
+(tried for 5 seconds with 500 milliseconds interval)
+Build info: version: '4.45.0', revision: 'cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.15'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 152.0.1, moz:accessibilityChecks: false, moz:buildID: 20260617213557, moz:geckodriverVersion: 0.37.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 2892, moz:profile: C:\Users\BAPS\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Session ID: 4bb51d5c-b78d-4588-a3d1-df7537492623
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+at utils.Element.getElement(Element.java:45)
+... 26 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.StaleElementReferenceException -->
+          </exception> <!-- java.lang.RuntimeException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- yatra_search_flight -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:yatra.testcases.YatraSearchFlights@5c30a9b0]" started-at="2026-06-23T09:13:43 IST" name="tearDown" finished-at="2026-06-23T09:13:55 IST" duration-ms="12482" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:yatra.testcases.YatraSearchFlights@3bb9a3ff]" started-at="2026-06-23T12:19:13 IST" name="tearDown" finished-at="2026-06-23T12:19:15 IST" duration-ms="2544" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=yatra_search_flight status=FAILURE method=YatraSearchFlights.yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@5c30a9b0] output={null}]]]>
+                <![CDATA[[TestResult name=yatra_search_flight status=FAILURE method=YatraSearchFlights.yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@3bb9a3ff] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:yatra.testcases.YatraSearchFlights@5c30a9b0]" started-at="2026-06-23T09:13:55 IST" name="setup" finished-at="2026-06-23T09:13:58 IST" duration-ms="3146" status="PASS">
+      </class> <!-- yatra.testcases.YatraSearchFlights -->
+    </test> <!-- firefox -->
+    <test started-at="2026-06-23T12:17:25 IST" name="Chrome" finished-at="2026-06-23T12:21:20 IST" duration-ms="234119">
+      <class name="yatra.testcases.YatraSearchFlights">
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:yatra.testcases.YatraSearchFlights@63355449]" started-at="2026-06-23T12:17:26 IST" name="setup" finished-at="2026-06-23T12:17:29 IST" duration-ms="2954" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -290,7 +175,40 @@ at java.base/java.lang.Thread.run(Thread.java:842)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@5c30a9b0]" started-at="2026-06-23T09:13:58 IST" name="yatra_search_flight" description="Yatra - Search flight and get cheapest flight for given n days" data-provider="flightSearchData" finished-at="2026-06-23T09:15:37 IST" duration-ms="99003" status="PASS">
+        <test-method signature="yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@63355449]" started-at="2026-06-23T12:17:29 IST" name="yatra_search_flight" description="Yatra - Search flight and get cheapest flight for given n days" data-provider="flightSearchData" finished-at="2026-06-23T12:19:09 IST" duration-ms="100742" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, return=today+9}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- yatra_search_flight -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:yatra.testcases.YatraSearchFlights@63355449]" started-at="2026-06-23T12:19:09 IST" name="tearDown" finished-at="2026-06-23T12:19:10 IST" duration-ms="449" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=yatra_search_flight status=SUCCESS method=YatraSearchFlights.yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@63355449] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:yatra.testcases.YatraSearchFlights@63355449]" started-at="2026-06-23T12:19:10 IST" name="setup" finished-at="2026-06-23T12:19:11 IST" duration-ms="1323" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@63355449]" started-at="2026-06-23T12:19:11 IST" name="yatra_search_flight" description="Yatra - Search flight and get cheapest flight for given n days" data-provider="flightSearchData" finished-at="2026-06-23T12:21:19 IST" duration-ms="128006" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -301,11 +219,11 @@ at java.base/java.lang.Thread.run(Thread.java:842)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- yatra_search_flight -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:yatra.testcases.YatraSearchFlights@5c30a9b0]" started-at="2026-06-23T09:15:37 IST" name="tearDown" finished-at="2026-06-23T09:15:40 IST" duration-ms="2448" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:yatra.testcases.YatraSearchFlights@63355449]" started-at="2026-06-23T12:21:19 IST" name="tearDown" finished-at="2026-06-23T12:21:20 IST" duration-ms="535" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=yatra_search_flight status=SUCCESS method=YatraSearchFlights.yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@5c30a9b0] output={null}]]]>
+                <![CDATA[[TestResult name=yatra_search_flight status=SUCCESS method=YatraSearchFlights.yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@63355449] output={null}]]]>
               </value>
             </param>
           </params>
@@ -314,5 +232,75 @@ at java.base/java.lang.Thread.run(Thread.java:842)
         </test-method> <!-- tearDown -->
       </class> <!-- yatra.testcases.YatraSearchFlights -->
     </test> <!-- Chrome -->
+    <test started-at="2026-06-23T12:19:15 IST" name="edge" finished-at="2026-06-23T12:22:26 IST" duration-ms="191052">
+      <class name="yatra.testcases.YatraSearchFlights">
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:yatra.testcases.YatraSearchFlights@5af3afd9]" started-at="2026-06-23T12:19:15 IST" name="setup" finished-at="2026-06-23T12:19:18 IST" duration-ms="3037" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[edge]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@5af3afd9]" started-at="2026-06-23T12:19:18 IST" name="yatra_search_flight" description="Yatra - Search flight and get cheapest flight for given n days" data-provider="flightSearchData" finished-at="2026-06-23T12:20:52 IST" duration-ms="93898" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, return=today+9}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- yatra_search_flight -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:yatra.testcases.YatraSearchFlights@5af3afd9]" started-at="2026-06-23T12:20:52 IST" name="tearDown" finished-at="2026-06-23T12:20:53 IST" duration-ms="1140" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=yatra_search_flight status=SUCCESS method=YatraSearchFlights.yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@5af3afd9] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:yatra.testcases.YatraSearchFlights@5af3afd9]" started-at="2026-06-23T12:20:53 IST" name="setup" finished-at="2026-06-23T12:20:56 IST" duration-ms="2975" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[edge]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@5af3afd9]" started-at="2026-06-23T12:20:56 IST" name="yatra_search_flight" description="Yatra - Search flight and get cheapest flight for given n days" data-provider="flightSearchData" finished-at="2026-06-23T12:22:26 IST" duration-ms="89127" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=today+10, return=today+month}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- yatra_search_flight -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:yatra.testcases.YatraSearchFlights@5af3afd9]" started-at="2026-06-23T12:22:26 IST" name="tearDown" finished-at="2026-06-23T12:22:26 IST" duration-ms="858" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=yatra_search_flight status=SUCCESS method=YatraSearchFlights.yatra_search_flight(java.util.Map)[pri:0, instance:yatra.testcases.YatraSearchFlights@5af3afd9] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- yatra.testcases.YatraSearchFlights -->
+    </test> <!-- edge -->
   </suite> <!-- Suite -->
 </testng-results>
