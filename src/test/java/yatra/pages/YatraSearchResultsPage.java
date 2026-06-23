@@ -26,6 +26,7 @@ public class YatraSearchResultsPage {
     By nextMonth = By
             .xpath("//div[contains(@class,'datepicker-inner full')]/i[@class='ytfi-arrow-right cursor-pointer']");
     By searchAgainButton = By.xpath("//button/span[text()='Search Again']");
+    By yatraCalendarModel = By.xpath("//div[@class='datepicker-inner full']");
 
     public YatraSearchResultsPage(WebDriver driver) {
         this.driver = driver;
@@ -53,6 +54,8 @@ public class YatraSearchResultsPage {
 
     public void clickDepartDate() {
         new Element(departDateInput, driver).click();
+         if (!new Element(yatraCalendarModel, driver).isDisplayed(Const.SHORT_WAIT))
+            new Element(departDateInput, driver).click();
     }
 
     public void clickSearchAgainButton() {

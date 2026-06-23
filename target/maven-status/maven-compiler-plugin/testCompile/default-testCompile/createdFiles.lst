@@ -1,7 +1,0 @@
-yatra\dataproviders\FlightSearchDataProvider.class
-yatra\testcases\YatraSearchFlights.class
-yatra\testcases\Archieved_MMTSearchFlights.class
-yatra\pages\YatraHomePage.class
-yatra\testcases\Base.class
-yatra\pages\MMTHomePage.class
-yatra\pages\YatraSearchResultsPage.class

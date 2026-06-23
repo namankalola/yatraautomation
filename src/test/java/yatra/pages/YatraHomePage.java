@@ -23,7 +23,8 @@ public class YatraHomePage {
     By travellersAndClassLabel = By
             .xpath("//span[text()='Travellers & Class']/ancestor::div[contains(@aria-label,'Travellers class')]");
     By travellersAndClassDoneButton = By.xpath("//button[text()='Done']");
- 
+    By yatraCalendarModel = By.xpath("//div[contains(@class,'yatra-calendar')]");
+
     public YatraHomePage(WebDriver driver) {
         this.driver = driver;
     }
@@ -58,6 +59,8 @@ public class YatraHomePage {
     public void selectDepartureDate(String departDate) {
 
         new Element(departureDate, driver).click();
+        if (!new Element(yatraCalendarModel, driver).isDisplayed(Const.SHORT_WAIT))
+            new Element(departureDate, driver).click();
         selectDate(departDate);
 
     }
@@ -65,6 +68,8 @@ public class YatraHomePage {
     public void selectReturnDate(String returnDt) {
 
         new Element(returnDate, driver).click();
+        if (!new Element(yatraCalendarModel, driver).isDisplayed(Const.SHORT_WAIT))
+            new Element(returnDate, driver).click();
         selectDate(returnDt);
 
     }
@@ -138,5 +143,4 @@ public class YatraHomePage {
         new Element(By.xpath("//button[text()='Search']"), driver).click();
     }
 
-    
 }
