@@ -6,7 +6,7 @@ This project is a Selenium TestNG automation framework developed to automate fli
 
 The framework follows the Page Object Model (POM) design pattern and is designed for scalability, maintainability, and easy integration of additional travel websites.
 
-Features
+**Features**
 
 Selenium WebDriver Automation
 
