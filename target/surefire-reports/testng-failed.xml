@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <test thread-count="2" parallel="tests" name="firefox(failed)" verbose="0">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="yatra.testcases.YatraSearchFlights">
+        <methods>
+          <include name="yatra_search_flight" invocation-numbers="0 1"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- yatra.testcases.YatraSearchFlights -->
+    </classes>
+  </test> <!-- firefox(failed) -->
+  <test thread-count="2" parallel="tests" name="Chrome(failed)" verbose="0">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="yatra.testcases.YatraSearchFlights">
+        <methods>
+          <include name="yatra_search_flight" invocation-numbers="0"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- yatra.testcases.YatraSearchFlights -->
+    </classes>
+  </test> <!-- Chrome(failed) -->
+</suite> <!-- Failed suite [Suite] -->

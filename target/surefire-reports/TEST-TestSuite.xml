@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestSuite" time="230.924" tests="4" errors="0" skipped="0" failures="3">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="D:\Projects\Java\Skyscanner\SkyScannerAutomation\target\test-classes;D:\Projects\Java\Skyscanner\SkyScannerAutomation\target\classes;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-java\4.25.0\selenium-java-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-api\4.25.0\selenium-api-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.25.0\selenium-chrome-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.25.0\selenium-chromium-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-json\4.25.0\selenium-json-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.25.0\selenium-manager-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v127\4.25.0\selenium-devtools-v127-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v128\4.25.0\selenium-devtools-v128-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v129\4.25.0\selenium-devtools-v129-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.25.0\selenium-devtools-v85-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.25.0\selenium-edge-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.25.0\selenium-firefox-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-http\4.25.0\selenium-http-4.25.0.jar;C:\Users\BAPS\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.25.0\selenium-ie-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.25.0\selenium-remote-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\com\google\guava\guava\33.3.0-jre\guava-33.3.0-jre.jar;C:\Users\BAPS\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\BAPS\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\BAPS\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\BAPS\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\BAPS\.m2\repository\com\google\errorprone\error_prone_annotations\2.28.0\error_prone_annotations-2.28.0.jar;C:\Users\BAPS\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\semconv\opentelemetry-semconv\1.25.0-alpha\opentelemetry-semconv-1.25.0-alpha.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-api\1.42.1\opentelemetry-api-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-context\1.42.1\opentelemetry-context-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.42.1\opentelemetry-exporter-logging-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.42.1\opentelemetry-sdk-common-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.42.1\opentelemetry-sdk-extension-autoconfigure-spi-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.42.1\opentelemetry-sdk-extension-autoconfigure-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-api-incubator\1.42.1-alpha\opentelemetry-api-incubator-1.42.1-alpha.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.42.1\opentelemetry-sdk-trace-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.42.1\opentelemetry-sdk-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.42.1\opentelemetry-sdk-metrics-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.42.1\opentelemetry-sdk-logs-1.42.1.jar;C:\Users\BAPS\.m2\repository\net\bytebuddy\byte-buddy\1.15.1\byte-buddy-1.15.1.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-os\4.25.0\selenium-os-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\apache\commons\commons-exec\1.4.0\commons-exec-1.4.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.25.0\selenium-safari-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-support\4.25.0\selenium-support-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\testng\testng\7.10.2\testng-7.10.2.jar;C:\Users\BAPS\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\BAPS\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\BAPS\.m2\repository\org\webjars\jquery\3.7.1\jquery-3.7.1.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Calcutta"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
+    <property name="sun.java.command" value="C:\Users\BAPS\AppData\Local\Temp\surefire8567764960706538853\surefirebooter-20260623091149031_3.jar C:\Users\BAPS\AppData\Local\Temp\surefire8567764960706538853 2026-06-23T09-11-48_698-jvmRun1 surefire-20260623091149031_1tmp surefire_0-20260623091149031_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\Projects\Java\Skyscanner\SkyScannerAutomation\target\test-classes;D:\Projects\Java\Skyscanner\SkyScannerAutomation\target\classes;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-java\4.25.0\selenium-java-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-api\4.25.0\selenium-api-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.25.0\selenium-chrome-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.25.0\selenium-chromium-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-json\4.25.0\selenium-json-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.25.0\selenium-manager-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v127\4.25.0\selenium-devtools-v127-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v128\4.25.0\selenium-devtools-v128-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v129\4.25.0\selenium-devtools-v129-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.25.0\selenium-devtools-v85-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.25.0\selenium-edge-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.25.0\selenium-firefox-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-http\4.25.0\selenium-http-4.25.0.jar;C:\Users\BAPS\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.25.0\selenium-ie-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.25.0\selenium-remote-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\com\google\guava\guava\33.3.0-jre\guava-33.3.0-jre.jar;C:\Users\BAPS\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\BAPS\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\BAPS\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\BAPS\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\BAPS\.m2\repository\com\google\errorprone\error_prone_annotations\2.28.0\error_prone_annotations-2.28.0.jar;C:\Users\BAPS\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\semconv\opentelemetry-semconv\1.25.0-alpha\opentelemetry-semconv-1.25.0-alpha.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-api\1.42.1\opentelemetry-api-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-context\1.42.1\opentelemetry-context-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.42.1\opentelemetry-exporter-logging-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.42.1\opentelemetry-sdk-common-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.42.1\opentelemetry-sdk-extension-autoconfigure-spi-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.42.1\opentelemetry-sdk-extension-autoconfigure-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-api-incubator\1.42.1-alpha\opentelemetry-api-incubator-1.42.1-alpha.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.42.1\opentelemetry-sdk-trace-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.42.1\opentelemetry-sdk-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.42.1\opentelemetry-sdk-metrics-1.42.1.jar;C:\Users\BAPS\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.42.1\opentelemetry-sdk-logs-1.42.1.jar;C:\Users\BAPS\.m2\repository\net\bytebuddy\byte-buddy\1.15.1\byte-buddy-1.15.1.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-os\4.25.0\selenium-os-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\apache\commons\commons-exec\1.4.0\commons-exec-1.4.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.25.0\selenium-safari-driver-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\seleniumhq\selenium\selenium-support\4.25.0\selenium-support-4.25.0.jar;C:\Users\BAPS\.m2\repository\org\testng\testng\7.10.2\testng-7.10.2.jar;C:\Users\BAPS\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\BAPS\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\BAPS\.m2\repository\org\webjars\jquery\3.7.1\jquery-3.7.1.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\BAPS"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-04-15"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-17"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\Projects\Java\Skyscanner\SkyScannerAutomation"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\BAPS\AppData\Local\Temp\surefire8567764960706538853\surefirebooter-20260623091149031_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.15+9-LTS-241"/>
+    <property name="user.name" value="DEVOQ"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\BAPS\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\BAPS\AppData\Local\Temp\"/>
+    <property name="java.version" value="17.0.15"/>
+    <property name="user.dir" value="D:\Projects\Java\Skyscanner\SkyScannerAutomation"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-17\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;c:\Users\BAPS\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\BAPS\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;c:\Users\BAPS\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\BAPS\AppData\Local\Android\Sdk\emulator;C:\Users\BAPS\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Java\jdk-17\bin;C:\Users\BAPS\AppData\Local\Android\Sdk\platform-tools;C:\Users\BAPS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\nodejs\;C:\Users\BAPS\AppData\Local\Microsoft\WindowsApps;C:\Users\BAPS\AppData\Roaming\npm;C:\Users\BAPS\AppData\Local\GitHubDesktop\bin;C:\Users\BAPS\AppData\Local\Programs\cursor\resources\app\bin;C:\Users\BAPS\AppData\Local\nvm;C:\nvm4w\nodejs;c:\Users\BAPS\AppData\Local\Programs\cursor\resources\app\bin;C:\apache-maven-3.9.11\\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Java\jdk-17\\bin;C:\Users\BAPS\scoop\shims;C:\Users\BAPS\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\BAPS\AppData\Local\Programs\Python\Python310\;C:\Users\BAPS\AppData\Local\Microsoft\WindowsApps;C:\Users\BAPS\AppData\Roaming\npm;C:\Users\BAPS\AppData\Local\GitHubDesktop\bin;C:\Users\BAPS\AppData\Local\Programs\Microsoft VS Code\bin;c:\Users\BAPS\.vscode\extensions\vscjava.vscode-java-debug-0.59.0\bundled\scripts\noConfigScripts;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.15+9-LTS-241"/>
+    <property name="java.specification.maintenance.version" value="1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="yatra_search_flight[{cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, return=today+9}](1)" classname="yatra.testcases.YatraSearchFlights" time="61.928">
+    <failure message="Element &lt;i class=&quot;ytfi-arrow-right cursor-pointer&quot;&gt; could not be scrolled into view&#10;Build info: version: &apos;4.25.0&apos;, revision: &apos;8a8aea2337&apos;&#10;System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.15&apos;&#10;Driver info: org.openqa.selenium.firefox.FirefoxDriver&#10;Command: [01b9d746-fd69-4bd9-a45e-b03a68bbbaca, clickElement {id=38a91280-3784-4503-af7b-280a4e1374ef}]&#10;Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 150.0.1, moz:accessibilityChecks: false, moz:buildID: 20260427013024, moz:geckodriverVersion: 0.37.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 12528, moz:profile: C:\Users\BAPS\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}&#10;Element: [[FirefoxDriver: firefox on windows (01b9d746-fd69-4bd9-a45e-b03a68bbbaca)] -&gt; xpath: //div[contains(@class,&apos;datepicker-inner full&apos;)]/i[@class=&apos;ytfi-arrow-right cursor-pointer&apos;]]&#10;Session ID: 01b9d746-fd69-4bd9-a45e-b03a68bbbaca" type="org.openqa.selenium.ElementNotInteractableException"><![CDATA[org.openqa.selenium.ElementNotInteractableException: 
+Element <i class="ytfi-arrow-right cursor-pointer"> could not be scrolled into view
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.15'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [01b9d746-fd69-4bd9-a45e-b03a68bbbaca, clickElement {id=38a91280-3784-4503-af7b-280a4e1374ef}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 150.0.1, moz:accessibilityChecks: false, moz:buildID: 20260427013024, moz:geckodriverVersion: 0.37.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 12528, moz:profile: C:\Users\BAPS\AppData\Local..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Element: [[FirefoxDriver: firefox on windows (01b9d746-fd69-4bd9-a45e-b03a68bbbaca)] -> xpath: //div[contains(@class,'datepicker-inner full')]/i[@class='ytfi-arrow-right cursor-pointer']]
+Session ID: 01b9d746-fd69-4bd9-a45e-b03a68bbbaca
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at yatra.pages.YatraSearchResultsPage.navigateToMonth(YatraSearchResultsPage.java:85)
+	at yatra.pages.YatraSearchResultsPage.getFareForNextNDays(YatraSearchResultsPage.java:70)
+	at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:71)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+]]></failure>
+    <system-out><![CDATA[Element clicked : By.xpath: //div[contains(@aria-label,'Departure From')]
+Element clicked : By.xpath: //li//span[text()='Boston']
+From City is set to :Boston
+Element clicked : By.xpath: //div[contains(@aria-label,'Going To')]
+Element clicked : By.xpath: //div[contains(@aria-label,'Departure From')]
+Element clicked : By.xpath: //li//span[text()='Amsterdam']
+From City is set to :Amsterdam
+Element clicked : By.xpath: //span[text()='Departure Date']/ancestor::div[contains(@aria-label,'Departure Date')]
+Element clicked : By.xpath: //div[@class='react-datepicker__month-container'][.//span[contains(.,'June') and contains(.,'2026')]]//div[contains(@aria-label,'Choose')]/span[contains(text(),'24')]
+Element clicked : By.xpath: //li//span[text()='Boston']
+From City is set to :Boston
+Element clicked : By.xpath: //span[text()='Return Date']/ancestor::div[contains(@aria-label,'Return Date')]
+Element clicked : By.xpath: //div[contains(@aria-label,'Going To')]
+Element clicked : By.xpath: //div[@class='react-datepicker__month-container'][.//span[contains(.,'July') and contains(.,'2026')]]//div[contains(@aria-label,'Choose')]/span[contains(text(),'2')]
+Element clicked : By.xpath: //li//span[text()='Amsterdam']
+From City is set to :Amsterdam
+Element clicked : By.xpath: //span[text()='Travellers & Class']/ancestor::div[contains(@aria-label,'Travellers class')]
+Element clicked : By.xpath: //p[text()='Adult']/following-sibling::div//li[text()='1']
+Element clicked : By.xpath: //span[text()='Departure Date']/ancestor::div[contains(@aria-label,'Departure Date')]
+Element clicked : By.xpath: //p[text()='Child']/following-sibling::div//li[text()='1']
+Element clicked : By.xpath: //div[@class='react-datepicker__month-container'][.//span[contains(.,'June') and contains(.,'2026')]]//div[contains(@aria-label,'Choose')]/span[contains(text(),'24')]
+Element clicked : By.xpath: //p[text()='Infant']/following-sibling::div//li[text()='1']
+Element clicked : By.xpath: //label[@aria-label='Economy']
+Element clicked : By.xpath: //span[text()='Return Date']/ancestor::div[contains(@aria-label,'Return Date')]
+Element clicked : By.xpath: //button[text()='Done']
+Element clicked : By.xpath: //div[@class='react-datepicker__month-container'][.//span[contains(.,'July') and contains(.,'2026')]]//div[contains(@aria-label,'Choose')]/span[contains(text(),'2')]
+Element clicked : By.xpath: //span[text()='Travellers & Class']/ancestor::div[contains(@aria-label,'Travellers class')]
+Element clicked : By.xpath: //button[text()='Search']
+Search button clicked
+Element clicked : By.xpath: //p[text()='Adult']/following-sibling::div//li[text()='1']
+Element clicked : By.xpath: //p[text()='Child']/following-sibling::div//li[text()='1']
+Element clicked : By.xpath: //p[text()='Infant']/following-sibling::div//li[text()='1']
+Element clicked : By.xpath: //label[@aria-label='Economy']
+Element clicked : By.xpath: //button[text()='Done']
+Element clicked : By.xpath: //button[text()='Search']
+Search button clicked
+Total Fare is :1,23,856
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jun 2026')]/..//span[@class='full date-val' and text()='25']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+Total Fare is :1,23,856
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+]]></system-out>
+    <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Jun 23, 2026 9:11:53 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 149
+Jun 23, 2026 9:11:53 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 149.0.7827.156. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.25.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+  </testcase>
+  <testcase name="yatra_search_flight[{cabinClass=Economy, travellers=1,1,1, daysToCheck=5, from=Boston, to=Amsterdam, depart=today+1, return=today+9}](1)" classname="yatra.testcases.YatraSearchFlights" time="101.359">
+    <failure message="stale element reference: stale element not found&#10;  (Session info: chrome=149.0.7827.156)&#10;For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception&#10;Build info: version: &apos;4.25.0&apos;, revision: &apos;8a8aea2337&apos;&#10;System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.15&apos;&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Command: [19cd61fa45483b85a593ec01958fae48, getElementText {id=f.AEFBD2736F38EF3A3B15F0D3E0C729E8.d.91F7C4188798B5CA0A77F3612A2CE0B4.e.7005}]&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 149.0.7827.156, chrome: {chromedriverVersion: 149.0.7827.155 (07b52360cc1..., userDataDir: C:\Users\BAPS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63663}, goog:processID: 13544, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63663/devtoo..., se:cdpVersion: 149.0.7827.156, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Element: [[ChromeDriver: chrome on windows (19cd61fa45483b85a593ec01958fae48)] -&gt; xpath: //*[contains(@ng-show,&apos;flt.totalFare&apos;)]]&#10;Session ID: 19cd61fa45483b85a593ec01958fae48" type="org.openqa.selenium.StaleElementReferenceException"><![CDATA[org.openqa.selenium.StaleElementReferenceException: 
+stale element reference: stale element not found
+  (Session info: chrome=149.0.7827.156)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.15'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [19cd61fa45483b85a593ec01958fae48, getElementText {id=f.AEFBD2736F38EF3A3B15F0D3E0C729E8.d.91F7C4188798B5CA0A77F3612A2CE0B4.e.7005}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 149.0.7827.156, chrome: {chromedriverVersion: 149.0.7827.155 (07b52360cc1..., userDataDir: C:\Users\BAPS\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63663}, goog:processID: 13544, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63663/devtoo..., se:cdpVersion: 149.0.7827.156, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (19cd61fa45483b85a593ec01958fae48)] -> xpath: //*[contains(@ng-show,'flt.totalFare')]]
+Session ID: 19cd61fa45483b85a593ec01958fae48
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.getText(RemoteWebElement.java:191)
+	at utils.Element.getText(Element.java:88)
+	at yatra.pages.YatraSearchResultsPage.getTotalFare(YatraSearchResultsPage.java:44)
+	at yatra.pages.YatraSearchResultsPage.getFareForNextNDays(YatraSearchResultsPage.java:75)
+	at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:71)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+]]></failure>
+    <system-out><![CDATA[Screenshot is saved in this location : target/screenshots/yatra_search_flight_20260623_091303.png
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jun 2026')]/..//span[@class='full date-val' and text()='26']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jun 2026')]/..//span[@class='full date-val' and text()='27']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jun 2026')]/..//span[@class='full date-val' and text()='28']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jun 2026')]/..//span[@class='full date-val' and text()='29']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+]]></system-out>
+  </testcase>
+  <testcase name="yatra_search_flight[{cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=today+10, return=today+month}](2)" classname="yatra.testcases.YatraSearchFlights" time="6.425">
+    <failure message="Index 1 out of bounds for length 0" type="java.lang.IndexOutOfBoundsException"><![CDATA[java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:359)
+	at java.base/java.util.ArrayList.get(ArrayList.java:427)
+	at yatra.pages.YatraHomePage.navigateToMonth(YatraHomePage.java:86)
+	at yatra.pages.YatraHomePage.selectDate(YatraHomePage.java:79)
+	at yatra.pages.YatraHomePage.selectReturnDate(YatraHomePage.java:68)
+	at yatra.testcases.YatraSearchFlights.yatra_search_flight(YatraSearchFlights.java:64)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:739)
+	at org.testng.TestRunner.run(TestRunner.java:614)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+]]></failure>
+    <system-out><![CDATA[Screenshot is saved in this location : target/screenshots/yatra_search_flight_20260623_091343.png
+Element clicked : By.xpath: //div[contains(@aria-label,'Departure From')]
+Element clicked : By.xpath: //li//span[text()='Boston']
+From City is set to :Boston
+Element clicked : By.xpath: //div[contains(@aria-label,'Going To')]
+Element clicked : By.xpath: //li//span[text()='Amsterdam']
+From City is set to :Amsterdam
+Element clicked : By.xpath: //span[text()='Departure Date']/ancestor::div[contains(@aria-label,'Departure Date')]
+Element clicked : By.xpath: //div[@class='react-datepicker__month-container'][.//span[contains(.,'July') and contains(.,'2026')]]//div[contains(@aria-label,'Choose')]/span[contains(text(),'3')]
+Element clicked : By.xpath: //span[text()='Return Date']/ancestor::div[contains(@aria-label,'Return Date')]
+]]></system-out>
+    <system-err><![CDATA[Jun 23, 2026 9:13:58 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 149
+Jun 23, 2026 9:13:58 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 149.0.7827.156. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.25.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+]]></system-err>
+  </testcase>
+  <testcase name="yatra_search_flight[{cabinClass=Premium Economy, travellers=2,2,1, daysToCheck=6, from=Boston, to=Amsterdam, depart=today+10, return=today+month}](2)" classname="yatra.testcases.YatraSearchFlights" time="99.083">
+    <system-out><![CDATA[Screenshot is saved in this location : target/screenshots/yatra_search_flight_20260623_091405.png
+Element clicked : By.xpath: //div[contains(@aria-label,'Departure From')]
+Element clicked : By.xpath: //li//span[text()='Boston']
+From City is set to :Boston
+Element clicked : By.xpath: //div[contains(@aria-label,'Going To')]
+Element clicked : By.xpath: //li//span[text()='Amsterdam']
+From City is set to :Amsterdam
+Element clicked : By.xpath: //span[text()='Departure Date']/ancestor::div[contains(@aria-label,'Departure Date')]
+Element clicked : By.xpath: //div[@class='react-datepicker__month-container'][.//span[contains(.,'July') and contains(.,'2026')]]//div[contains(@aria-label,'Choose')]/span[contains(text(),'3')]
+Element clicked : By.xpath: //span[text()='Return Date']/ancestor::div[contains(@aria-label,'Return Date')]
+Element clicked : By.xpath: //div[@class='react-datepicker__month-container'][.//span[contains(.,'July') and contains(.,'2026')]]//div[contains(@aria-label,'Choose')]/span[contains(text(),'23')]
+Element clicked : By.xpath: //span[text()='Travellers & Class']/ancestor::div[contains(@aria-label,'Travellers class')]
+Element clicked : By.xpath: //p[text()='Adult']/following-sibling::div//li[text()='2']
+Element clicked : By.xpath: //p[text()='Child']/following-sibling::div//li[text()='2']
+Element clicked : By.xpath: //p[text()='Infant']/following-sibling::div//li[text()='1']
+Element clicked : By.xpath: //label[@aria-label='Premium Economy']
+Element clicked : By.xpath: //button[text()='Done']
+Element clicked : By.xpath: //button[text()='Search']
+Search button clicked
+Total Fare is :2,25,496
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jul 2026')]/..//span[@class='full date-val' and text()='4']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jul 2026')]/..//span[@class='full date-val' and text()='5']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jul 2026')]/..//span[@class='full date-val' and text()='6']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jul 2026')]/..//span[@class='full date-val' and text()='7']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jul 2026')]/..//span[@class='full date-val' and text()='8']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+Element clicked : By.xpath: //span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']
+Element clicked : By.xpath: //div[@class='month-name full' and contains(text(),'Jul 2026')]/..//span[@class='full date-val' and text()='9']
+Element clicked : By.xpath: //button/span[text()='Search Again']
+{07/07/2026=224294.0, 09/07/2026=214706.0, 04/07/2026=214706.0, 05/07/2026=233008.0, 08/07/2026=214706.0, 06/07/2026=214706.0}
+Lowest fare for the trip will be : 09/07/2026=214706.0
+]]></system-out>
+  </testcase>
+</testsuite>
