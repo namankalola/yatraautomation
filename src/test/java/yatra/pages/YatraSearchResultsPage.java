@@ -28,6 +28,18 @@ public class YatraSearchResultsPage {
     By searchAgainButton = By.xpath("//button/span[text()='Search Again']");
     By yatraCalendarModel = By.xpath("//div[@class='datepicker-inner full']");
 
+    // Dynamic locators listed below
+    By monthTitle(String month, String year) {
+        return By.xpath("//div[@class='month-name full' and contains(text(),'" + month + " " + year + "')]");
+    }
+
+    By dateOfTheMonth(String day, String month, String year) {
+        return By.xpath("//div[@class='month-name full' and contains(text(),'" + month + " " + year
+                + "')]/..//span[@class='full date-val' and text()='" + day + "']");
+    }
+
+    // Only actions definations below, no locators
+
     public YatraSearchResultsPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -54,7 +66,7 @@ public class YatraSearchResultsPage {
 
     public void clickDepartDate() {
         new Element(departDateInput, driver).click();
-         if (!new Element(yatraCalendarModel, driver).isDisplayed(Const.SHORT_WAIT))
+        if (!new Element(yatraCalendarModel, driver).isDisplayed(Const.SHORT_WAIT))
             new Element(departDateInput, driver).click();
     }
 
@@ -97,16 +109,13 @@ public class YatraSearchResultsPage {
     }
 
     private boolean isMonthVisible(String month, String year) {
-        String xpath = "//div[@class='month-name full' and contains(text(),'" + month + " " + year + "')]";
-        if (new Element(By.xpath(xpath), driver).getElementsList()
+        if (new Element(monthTitle(month, year), driver).getElementsList()
                 .size() > 0)
             return true;
         return false;
     }
 
     private void clickDate(String day, String month, String year) {
-        String xpath = "//div[@class='month-name full' and contains(text(),'" + month + " " + year
-                + "')]/..//span[@class='full date-val' and text()='" + day + "']";
-        new Element(By.xpath(xpath), driver).click();
+        new Element(dateOfTheMonth(day, month, year), driver).click();
     }
 }

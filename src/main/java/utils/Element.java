@@ -2,7 +2,6 @@ package utils;
 
 import java.time.Duration;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -18,15 +17,16 @@ import manager.Const;
 public class Element {
     private final WebDriver driver;
     private final By by;
+    private final WebDriverWait wait;
 
     public Element(By by, WebDriver driver) {
         this.by = by;
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(Const.LONG_WAIT));
     }
 
     public void click() {
         WebElement element = null;
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Const.MEDIUM_WAIT));
         try {
             element = wait.until(ExpectedConditions.elementToBeClickable(by));
             element.click();
@@ -35,26 +35,37 @@ public class Element {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].click();", element);
         }
-        System.out.println("Element clicked : " + by);
+        Reporting.info("Element clicked : " + by.toString());
+    }
+
+    public void click(int index) {
+        List<WebElement> elements = driver.findElements(by);
+        if (elements.size() <= index) {
+            throw new RuntimeException("Element index " + index + " not found for locator : " + by);
+        }
+        elements.get(index).click();
+        Reporting.info("Clicked element index " + index + " for locator : " + by);
     }
 
     public WebElement getElement(int seconds) {
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         try {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         } catch (Exception e) {
+            Reporting.error(e.getClass().getName());
             throw new RuntimeException("Element not found or not visible: " + by, e);
         }
     }
 
     public void enterText(String text) {
         getElement(30).sendKeys(text);
+        Reporting.info(text + ": Text entered in element : " + by);
     }
 
     public boolean isDisplayed(int seconds) {
         try {
-            return getElement(seconds).isDisplayed();
+            boolean displayed = getElement(seconds).isDisplayed();
+            Reporting.info("Element : " + by + "is set to displayed : " + displayed);
+            return displayed;
         } catch (Exception e) {
             return false;
         }
@@ -77,14 +88,18 @@ public class Element {
     }
 
     public List<WebElement> getElementsList() {
-        return driver.findElements(by);
+        List<WebElement> list = driver.findElements(by);
+        Reporting.info(list.size() + " : Element found for the locator : " + by);
+        return list;
     }
 
-    public boolean isClickable(){
-        return getElement(Const.MEDIUM_WAIT).isEnabled();
+    public boolean isClickable() {
+        boolean clickable = getElement(Const.MEDIUM_WAIT).isEnabled();
+        Reporting.info(by + " : Element is set to clickable : " + clickable);
+        return clickable;
     }
 
-    public String getText(){
+    public String getText() {
         return getElement(Const.MEDIUM_WAIT).getText();
     }
 }
