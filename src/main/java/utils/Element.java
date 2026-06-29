@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,12 +31,14 @@ public class Element {
         try {
             element = wait.until(ExpectedConditions.elementToBeClickable(by));
             element.click();
+            Reporting.info("Element clicked : " + by.toString());
         } catch (Exception e) {
             element = getElement(5);
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].click();", element);
+            Reporting.info("Element clicked using Javascript executor: " + by.toString());
         }
-        Reporting.info("Element clicked : " + by.toString());
+        
     }
 
     public void click(int index) {
@@ -63,10 +66,11 @@ public class Element {
 
     public boolean isDisplayed(int seconds) {
         try {
-            boolean displayed = getElement(seconds).isDisplayed();
+            boolean displayed = getElementByWaitPolling(seconds).isDisplayed();
             Reporting.info("Element : " + by + "is set to displayed : " + displayed);
             return displayed;
         } catch (Exception e) {
+            Reporting.warn("Element : " + by + "is NOT displayed : ");
             return false;
         }
     }
@@ -74,14 +78,12 @@ public class Element {
     public WebElement getElementByWaitPolling(int seconds) {
         try {
             Wait<WebDriver> wait = new FluentWait<>(driver)
-
                     .withTimeout(Duration.ofSeconds(seconds))
-
                     .pollingEvery(Duration.ofSeconds(Const.SHORT_WAIT))
+                    .ignoring(NoSuchElementException.class)
+                    .ignoring(StaleElementReferenceException.class);
 
-                    .ignoring(NoSuchElementException.class);
-
-            return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("example")));
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         } catch (Exception e) {
             throw new RuntimeException("Element not found or not visible: " + by, e);
         }
@@ -100,6 +102,6 @@ public class Element {
     }
 
     public String getText() {
-        return getElement(Const.MEDIUM_WAIT).getText();
+        return getElementByWaitPolling(Const.LONG_WAIT).getText();
     }
 }

@@ -11,6 +11,11 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+
+import manager.ExtentReportManager;
 
 public class Reporting {
     private static final Logger logger = LogManager.getLogger(Reporting.class);
@@ -27,39 +32,70 @@ public class Reporting {
     public static void captureScreenshot(WebDriver driver, String testName) {
 
         try {
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+            String timestamp = LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
             String filePath = "target/screenshots/" + testName + "_" + timestamp + ".png";
+
             File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             Files.createDirectories(new File("target/screenshots").toPath());
-            Files.copy(source.toPath(), new File(filePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
-            fail("Screenshot is saved in this location : " + filePath);
+            Files.copy(source.toPath(), new File(filePath).toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+
+            // Embed screenshot into the ExtentReports HTML node
+            ExtentTest extentTest = ExtentReportManager.getTest();
+            if (extentTest != null) {
+                extentTest.fail("Screenshot on failure",
+                        MediaEntityBuilder.createScreenCaptureFromPath(
+                                "../screenshots/" + testName + "_" + timestamp + ".png")
+                                .build());
+            }
+
+            fail("Screenshot saved : " + filePath);
         } catch (IOException e) {
-            e.printStackTrace();
+            error("Failed to capture screenshot : " + e.getMessage());
         }
+    }
+
+ private static void logToExtent(Status status, String message) {
+        ExtentTest extentTest = ExtentReportManager.getTest();
+        if (extentTest != null) {
+            extentTest.log(status, message);
+        }
+    }
+
+    public static void step(String message) {
+        logger.info("[STEP] " + message);
+        System.out.println("[STEP] " + message);
+        logToExtent(Status.INFO, message);
     }
 
     public static void info(String message) {
         logger.info(message);
         System.out.println(message);
+        // log(Status.INFO, message);
     }
 
     public static void warn(String message) {
         logger.warn(message);
         System.out.println(message);
+        logToExtent(Status.WARNING, message);
     }
 
     public static void error(String message) {
         logger.error(message);
         System.out.println(message);
+        logToExtent(Status.FAIL, message);
     }
 
     public static void pass(String message) {
         logger.info("PASS : " + message);
         System.out.println("PASS : " + message);
+        logToExtent(Status.PASS, message);
     }
 
     public static void fail(String message) {
         logger.error("FAIL : " + message);
         System.out.println("FAIL : " + message);
+        logToExtent(Status.FAIL, message);
     }
 }

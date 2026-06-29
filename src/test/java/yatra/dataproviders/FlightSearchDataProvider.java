@@ -33,4 +33,13 @@ public class FlightSearchDataProvider {
                 { test2 }
         };
     }
+
+    @DataProvider(name = "internationalFlightSearch")
+    public Object[] internationalFlightSearch() {
+        return new Object[] {
+                "FLDEMO01",
+                "FLDEMO02"
+        };
+    }
+
 }

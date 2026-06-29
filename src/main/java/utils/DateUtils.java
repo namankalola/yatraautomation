@@ -2,6 +2,7 @@ package utils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -54,6 +55,11 @@ public class DateUtils {
     public String getYear(LocalDate date) {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("YYYY", Locale.ENGLISH);
         return date.format(format);
+    }
+
+    public String getDayOfTheWeekDDD(LocalDate date) {
+        return date.getDayOfWeek()
+                .getDisplayName(TextStyle.FULL, Locale.ENGLISH).substring(0, 3);
     }
 
     // This is picked up from chatGPT

@@ -1,13 +1,12 @@
 package yatra.testcases;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import manager.Const;
+import utils.Excels;
 import yatra.dataproviders.FlightSearchDataProvider;
-import yatra.pages.MMTHomePage;
 import yatra.pages.YatraHomePage;
 import yatra.pages.YatraSearchResultsPage;
 
@@ -49,29 +48,146 @@ import yatra.pages.YatraSearchResultsPage;
  */
 
 public class YatraSearchFlights extends Base {
-    MMTHomePage homePage;
-    YatraHomePage yatraHomePage;
-    YatraSearchResultsPage yatraSearchResultsPage;
+        YatraHomePage yatraHomePage;
+        YatraSearchResultsPage yatraSearchResultsPage;
 
-    @Test(description = "Yatra - Search flight and get cheapest flight for given n days", dataProvider = "flightSearchData", dataProviderClass = FlightSearchDataProvider.class)
-    public void yatra_search_flight(Map<String, String> data) throws InterruptedException {
-        driver.get("https://flight.yatra.com/");
-        yatraHomePage = new YatraHomePage(driver);
-        yatraSearchResultsPage = new YatraSearchResultsPage(driver);
-        yatraHomePage.setFromCity(data.get("from"));
-        yatraHomePage.setToCity(data.get("to"));
-        yatraHomePage.selectDepartureDate(data.get("depart"));
-        yatraHomePage.selectReturnDate(data.get("return"));
-        yatraHomePage.selectTravellersAndCabinClass(data.get("travellers"), data.get("cabinClass"));
+        @Test(description = "FL005_Yatra - Search flight and get cheapest flight for given n days", dataProvider = "flightSearchData", dataProviderClass = FlightSearchDataProvider.class, groups = "Smoke")
+        public void search_international_round_trip_flight(Map<String, String> data) throws InterruptedException {
 
-        yatraHomePage.clickSearch();
-        Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed());
+                yatraHomePage = new YatraHomePage(driver);
+                yatraHomePage.navigateTo(Const.YATRA_BASE_URL);
+                yatraSearchResultsPage = new YatraSearchResultsPage(driver);
+                yatraHomePage.setFromCity(data.get("from"));
+                yatraHomePage.setToCity(data.get("to"));
+                yatraHomePage.selectDepartureDate(data.get("depart"));
+                yatraHomePage.selectReturnDate(data.get("return"));
+                yatraHomePage.selectTravellersAndCabinClass(data.get("travellers"), data.get("cabinClass"));
+                yatraHomePage.clickSearch();
+                Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed(),
+                                "Search results not displayed for route: " + data.get("from") + " → " + data.get("to"));
+                yatraSearchResultsPage.getTotalFare("International");
+                yatraSearchResultsPage.lowestFare(yatraSearchResultsPage.getFareForNextNDays(data.get("depart"),
+                                Integer.parseInt(data.get("daysToCheck")), "International"));
 
-        System.out.println("Total Fare is :" + yatraSearchResultsPage.getTotalFare());
-        Map<String, Double> fares = yatraSearchResultsPage.getFareForNextNDays(data.get("depart"),
-                Integer.parseInt(data.get("daysToCheck")));
-        List<Map.Entry<String, Double>> list = new ArrayList<>(fares.entrySet());
-        list.sort(Map.Entry.comparingByValue());
-        System.out.println("Lowest fare for the trip will be : " + list.get(0));
-    }
+        }
+
+        @Test(description = "DataDriven_Yatra - Search flight and get cheapest flight for given n days", dataProvider = "internationalFlightSearch", dataProviderClass = FlightSearchDataProvider.class, groups = "Smoke")
+        public void search_international_round_trip_flight_datadriven(String testID) throws InterruptedException {
+
+                String sheet = "Journey";
+                String daysToCheck = Excels.getValue(sheet, testID, "daysToCheck");
+                String from = Excels.getValue(sheet, testID, "From");
+                String to = Excels.getValue(sheet, testID, "To");
+                String departure = Excels.getValue(sheet, testID, "Departure");
+                String returnDate = Excels.getValue(sheet, testID, "Return");
+                String tripType = Excels.getValue(sheet, testID, "TripType");
+                sheet = "Travellers";
+                String travellers = Excels.getValue(sheet, testID, "Adults") + ","
+                                + Excels.getValue(sheet, testID, "Children")
+                                + "," + Excels.getValue(sheet, testID, "Infants");
+                String cabinClass = Excels.getValue(sheet, testID, "cabinClass");
+
+                yatraHomePage = new YatraHomePage(driver);
+                yatraHomePage.navigateTo(Const.YATRA_BASE_URL);
+                yatraSearchResultsPage = new YatraSearchResultsPage(driver);
+                yatraHomePage.setFromCity(from);
+                yatraHomePage.setToCity(to);
+                yatraHomePage.selectDepartureDate(departure);
+                yatraHomePage.selectReturnDate(returnDate);
+                yatraHomePage.selectTravellersAndCabinClass(travellers, cabinClass);
+                yatraHomePage.clickSearch();
+                Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed(),
+                                "Search results not displayed for route: " + from + " → " + to);
+                yatraSearchResultsPage.getTotalFare("International");
+                yatraSearchResultsPage.lowestFare(yatraSearchResultsPage.getFareForNextNDays(departure,
+                                Integer.parseInt(daysToCheck), tripType));
+
+        }
+
+        @Test(description = "FL001_Yatra - Search One WayFlight and get cheapest flight for given n days", groups = {
+                        "Regression" })
+        public void search_one_way_flight() throws InterruptedException {
+                String testID = "FL001";
+                String sheet = "Journey";
+                String daysToCheck = Excels.getValue(sheet, testID, "daysToCheck");
+                String from = Excels.getValue(sheet, testID, "From");
+                String to = Excels.getValue(sheet, testID, "To");
+                String departure = Excels.getValue(sheet, testID, "Departure");
+                String tripType = Excels.getValue(sheet, testID, "TripType");
+                sheet = "Travellers";
+                String travellers = Excels.getValue(sheet, testID, "Adults") + ","
+                                + Excels.getValue(sheet, testID, "Children")
+                                + "," + Excels.getValue(sheet, testID, "Infants");
+                String cabinClass = Excels.getValue(sheet, testID, "cabinClass");
+                yatraHomePage = new YatraHomePage(driver);
+                yatraHomePage.navigateTo(Const.YATRA_BASE_URL);
+                yatraSearchResultsPage = new YatraSearchResultsPage(driver);
+                yatraHomePage.setFromCity(from);
+                yatraHomePage.setToCity(to);
+                yatraHomePage.selectDepartureDate(departure);
+                yatraHomePage.selectTravellersAndCabinClass(travellers, cabinClass);
+                yatraHomePage.clickSearch();
+                Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed(),
+                                "Search results not displayed for route: " + from + " → " + to);
+                yatraSearchResultsPage.getTotalFare(tripType);
+                yatraSearchResultsPage.lowestFare(yatraSearchResultsPage.getFareForNextNDays(departure,
+                                Integer.parseInt(daysToCheck), tripType));
+
+        }
+
+        @Test(description = "FL002_Yatra - Search_Round_Trip_Flight and get cheapest flight for given n days", groups = {
+                        "Regression" })
+        public void search_round_trip_flight() throws InterruptedException {
+                String testID = "FL002";
+                String sheet = "Journey";
+                String daysToCheck = Excels.getValue(sheet, testID, "daysToCheck");
+                String from = Excels.getValue(sheet, testID, "From");
+                String to = Excels.getValue(sheet, testID, "To");
+                String departure = Excels.getValue(sheet, testID, "Departure");
+                String tripType = Excels.getValue(sheet, testID, "TripType");
+                sheet = "Travellers";
+                String travellers = Excels.getValue(sheet, testID, "Adults") + ","
+                                + Excels.getValue(sheet, testID, "Children")
+                                + "," + Excels.getValue(sheet, testID, "Infants");
+                yatraHomePage = new YatraHomePage(driver);
+                yatraHomePage.navigateTo(Const.YATRA_BASE_URL);
+                yatraSearchResultsPage = new YatraSearchResultsPage(driver);
+                yatraHomePage.setFromCity(from);
+                yatraHomePage.setToCity(to);
+                yatraHomePage.selectDepartureDate(departure);
+                yatraHomePage.selectTravellersAndCabinClass(travellers, Excels.getValue(sheet, testID, "cabinClass"));
+                yatraHomePage.clickSearch();
+                Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed(),
+                                "Search results not displayed for route: " + from + " → " + to);
+                yatraSearchResultsPage.getTotalFare(tripType);
+                yatraSearchResultsPage.lowestFare(yatraSearchResultsPage.getFareForNextNDays(departure,
+                                Integer.parseInt(daysToCheck), tripType));
+        }
+
+        @Test(description = "FL003_Search_Multi_City_Domestic_Flight", groups = { "Release1.1" })
+        public void search_multi_city_domestic_flight() throws InterruptedException {
+                String testID = "FL003";
+                String sheet = "Journey";
+                String from = Excels.getValue(sheet, testID, "From");
+                String to = Excels.getValue(sheet, testID, "To");
+                String departure = Excels.getValue(sheet, testID, "Departure");
+                String tripType = Excels.getValue(sheet, testID, "TripType");
+                sheet = "Travellers";
+                String travellers = Excels.getValue(sheet, testID, "Adults") + ","
+                                + Excels.getValue(sheet, testID, "Children")
+                                + "," + Excels.getValue(sheet, testID, "Infants");
+                yatraHomePage = new YatraHomePage(driver);
+                yatraHomePage.navigateTo(Const.YATRA_BASE_URL);
+                yatraSearchResultsPage = new YatraSearchResultsPage(driver);
+                yatraHomePage.setFromCity(from);
+                yatraHomePage.setToCity(to);
+                yatraHomePage.selectDepartureDate(departure);
+                yatraHomePage.selectTravellersAndCabinClass(travellers, Excels.getValue(sheet, testID, "cabinClass"));
+                yatraHomePage.clickSearch();
+                Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed(),
+                                "Search results not displayed for route: " + from + " → " + to);
+                yatraSearchResultsPage.getTotalFare(tripType);
+                // yatraSearchResultsPage.lowestFare(yatraSearchResultsPage.getFareForNextNDays(departure,
+                // Integer.parseInt(daysToCheck), tripType));
+        }
 }
