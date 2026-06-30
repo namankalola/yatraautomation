@@ -24,6 +24,10 @@ public class YatraHomePage {
             .xpath("//span[text()='Travellers & Class']/ancestor::div[contains(@aria-label,'Travellers class')]");
     By travellersAndClassDoneButton = By.xpath("//button[text()='Done']");
     By yatraCalendarModel = By.xpath("//div[contains(@class,'yatra-calendar')]");
+    By multiCityfromLabel = By.xpath("//div[contains(@aria-label,'From')]");
+    By multiCityFromInput = By.xpath("//label[text()='From']/..//input");
+    By multiCityToLabel = By.xpath("//div[contains(@aria-label,'To')]");
+    By multiCityToInput = By.xpath("//label[text()='To']/..//input");
 
     // Dynamic locators listed below
     By navigation(String nav) {
@@ -39,9 +43,18 @@ public class YatraHomePage {
     }
 
     By dateOfTheMonth(String day, String month, String year) {
-        return By.xpath("//div[@class='react-datepicker__month-container'][.//span[contains(.,'" + month
-                + "') and contains(.,'" + year + "')]]//div[contains(@aria-label,'Choose')]/span[contains(text(),'"
+        return By.xpath("//div[@class='react-datepicker__month-container'][.//span[contains(.,'"
+                + month
+                + "') and contains(.,'" + year +
+                "')]]//div[contains(@aria-label,'Choose')]/span[contains(text(),'"
                 + day + "')]");
+
+        // return
+        // By.xpath("//div[@class='react-datepicker__month-container'][.//span[contains(.,'"
+        // + month
+        // + "') and contains(.,'" + year + "')]]//div[contains(@aria-label,'Choose')
+        // and contains(@aria-label,'"
+        // + month + " " + day + "')]");
     }
 
     By adultTraveller(int adults) {
@@ -58,6 +71,11 @@ public class YatraHomePage {
 
     By travellerClass(String travelClass) {
         return By.xpath("//label[@aria-label='" + travelClass + "']");
+    }
+
+    By tripTypeRadio(String tripType) {
+        // String xpath = "//h4[text()='" + tripType + "']/ancestor::label//input";
+        return By.xpath("//h4[normalize-space()='Multi City']/ancestor::label//input");
     }
 
     // Only actions definations below, no locators
@@ -116,7 +134,8 @@ public class YatraHomePage {
     private void selectDate(String departDate) {
         departDate = new DateUtils().resolveDate(departDate);
         LocalDate date = new DateUtils().parseDate(departDate);
-        String day = date.getDayOfMonth() + "";
+        // String day = new DateUtils().getDay(date) + "";
+        String day = new DateUtils().getDay(date) + "";
         String year = date.getYear() + "";
         String month = new DateUtils().getMonth(date);
         // Navigate to Month by clicking Next button
@@ -175,4 +194,33 @@ public class YatraHomePage {
         new Element(travellersAndClassDoneButton, driver).click();
     }
 
+    // Multi City Scenario
+
+    public void setMultiCityFrom(String city, int leg) {
+        new Element(multiCityfromLabel, driver).getElementsList().get(leg).click();
+        new Element(multiCityFromInput, driver).enterText(city);
+        new Element(city(city), driver).click();
+        Reporting.step("Entering Multi City flight details — From City : " + leg + " with city : " + city);
+    }
+
+    public void setMultiCityTo(String city, int leg) {
+        new Element(multiCityToLabel, driver).getElementsList().get(leg).click();
+        new Element(multiCityToInput, driver).enterText(city);
+        new Element(city(city), driver).click();
+        Reporting.step("Entering Multi City flight details — Destination City : " + leg + " with city : " + city);
+    }
+
+    public void selectMultiCityDepartureDate(String departDate, int leg) {
+        new Element(departureDate, driver).getElementsList().get(leg).click();
+        if (!new Element(yatraCalendarModel, driver).isDisplayed(Const.SHORT_WAIT))
+            new Element(departureDate, driver).click();
+        selectDate(departDate);
+        Reporting
+                .step("Entering Multi City flight details — Departure Date : " + leg + " with date as : " + departDate);
+    }
+
+    public void clickTripTypeRadio(String tripType) {
+        // new Element(tripTypeRadio(tripType), driver).click();
+        new Element(By.cssSelector("input[value='M']"), driver).click();
+    }
 }

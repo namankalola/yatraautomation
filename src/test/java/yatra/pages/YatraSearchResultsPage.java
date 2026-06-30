@@ -25,12 +25,15 @@ public class YatraSearchResultsPage {
     By tatalFareDomestic = By.xpath("//p[@class='ow-price-above-btn']");
     By flightCards = By.xpath("//button[contains(text(),'View Fares')]/ancestor::div[contains(@class,'flight-det')]");
     By modifySearchButton = By.xpath("//button/span[text()='Modify Search']");
-    By departDateInput = By.xpath("//span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']");
+    By departDateInput = By.xpath("//input[@name='flight_depart_date_0']/ancestor::div[contains(@class,'depart')]");
     By returnDateInput = By.xpath("//span[text()='Return']/following-sibling::input[@name='arrivalDate_0']");
     By nextMonth = By
             .xpath("//div[contains(@class,'datepicker-inner full')]/i[@class='ytfi-arrow-right cursor-pointer']");
     By searchAgainButton = By.xpath("//button/span[text()='Search Again']");
-    By yatraCalendarModel = By.xpath("//div[@class='datepicker-inner full']");
+    By yatraCalendarModel = By.xpath(
+            "//div[contains(@class,'depart')]//div[contains(@class,'datepicker-wrapper months-2') and not(contains(@class,'ng-hide'))]//div[@class='datepicker-inner full']");
+    By multiCityFlightCards = By
+            .xpath("//button[contains(text(),'Selected')]/ancestor::div[contains(@class,'flight-det')]");
 
     // Dynamic locators listed below
     By monthTitle(String month, String year) {
@@ -166,5 +169,11 @@ public class YatraSearchResultsPage {
         Reporting
                 .step("Lowest fare for the departure date: " + list.get(0).getKey() + "is : " + list.get(0).getValue());
         return list.get(0).getValue();
+    }
+
+    public boolean verifyResultDisplayedForMultiCitySearch() {
+        boolean displayed = new Element(multiCityFlightCards, driver).isDisplayed(Const.LONG_WAIT);
+        Reporting.step("Flight search result is displayed: " + displayed);
+        return displayed;
     }
 }

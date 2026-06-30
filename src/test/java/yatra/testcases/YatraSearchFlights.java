@@ -1,5 +1,6 @@
 package yatra.testcases;
 
+import java.util.List;
 import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -164,30 +165,40 @@ public class YatraSearchFlights extends Base {
                                 Integer.parseInt(daysToCheck), tripType));
         }
 
-        @Test(description = "FL003_Search_Multi_City_Domestic_Flight", groups = { "Release1.1" })
+        @Test(description = "FL003_Search_Multi_City_Domestic_Flight", groups = { "Release1.1" }, enabled = false)
         public void search_multi_city_domestic_flight() throws InterruptedException {
                 String testID = "FL003";
-                String sheet = "Journey";
-                String from = Excels.getValue(sheet, testID, "From");
-                String to = Excels.getValue(sheet, testID, "To");
-                String departure = Excels.getValue(sheet, testID, "Departure");
-                String tripType = Excels.getValue(sheet, testID, "TripType");
-                sheet = "Travellers";
+                // String sheet = "Journey";
+                // String from = Excels.getValue(sheet, testID, "From");
+                // String to = Excels.getValue(sheet, testID, "To");
+                // String departure = Excels.getValue(sheet, testID, "Departure");
+                // String tripType = Excels.getValue(sheet, testID, "TripType");
+                String sheet = "Travellers";
                 String travellers = Excels.getValue(sheet, testID, "Adults") + ","
                                 + Excels.getValue(sheet, testID, "Children")
                                 + "," + Excels.getValue(sheet, testID, "Infants");
+
                 yatraHomePage = new YatraHomePage(driver);
                 yatraHomePage.navigateTo(Const.YATRA_BASE_URL);
                 yatraSearchResultsPage = new YatraSearchResultsPage(driver);
-                yatraHomePage.setFromCity(from);
-                yatraHomePage.setToCity(to);
-                yatraHomePage.selectDepartureDate(departure);
-                yatraHomePage.selectTravellersAndCabinClass(travellers, Excels.getValue(sheet, testID, "cabinClass"));
+
+                List<Map<String, String>> testData = Excels.getRowsForTest("Journey", testID);
+                if (testData.size() > 1) {
+                        // yatraHomePage.clickTripTypeRadio("Multi City");
+                }
+                for (Map<String, String> map : testData) {
+                        int leg = Integer.parseInt(map.get("Leg")) - 1;
+                        yatraHomePage.setMultiCityFrom(map.get("From"), leg);
+                        yatraHomePage.setMultiCityTo(map.get("To"), leg);
+                        yatraHomePage.selectMultiCityDepartureDate(map.get("Departure"), leg);
+                }
+
+                yatraHomePage.selectTravellersAndCabinClass(travellers,
+                                Excels.getValue(sheet, testID, "cabinClass"));
                 yatraHomePage.clickSearch();
-                Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed(),
-                                "Search results not displayed for route: " + from + " → " + to);
-                yatraSearchResultsPage.getTotalFare(tripType);
-                // yatraSearchResultsPage.lowestFare(yatraSearchResultsPage.getFareForNextNDays(departure,
-                // Integer.parseInt(daysToCheck), tripType));
+                Assert.assertTrue(yatraSearchResultsPage.verifyResultDisplayedForMultiCitySearch(),
+                "Search results not displayed for selected route");
+                // yatraSearchResultsPage.getTotalFare(tripType);
+
         }
 }

@@ -48,7 +48,7 @@ public class DateUtils {
     }
 
     public String getDay(LocalDate date) {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("DD", Locale.ENGLISH);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd", Locale.ENGLISH);
         return date.format(format);
     }
 

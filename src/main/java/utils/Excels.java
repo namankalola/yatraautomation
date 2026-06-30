@@ -94,8 +94,10 @@ public class Excels {
     public static void main(String args[]) {
         try {
             loadWorkbook("src\\test\\java\\yatra\\testdata\\DemoTestData.xlsx");
-            System.out.println(getSheetData("Flights").toString());
-            System.out.println(getValue("Flights", "TC001", "From"));
+            // System.out.println(getSheetData("Flights").toString());
+            // System.out.println(getValue("Flights", "TC001", "From"));
+
+            System.out.println(getRowsForTest("Journey", "FL003"));
 
         } catch (IOException e) {
             e.printStackTrace();
