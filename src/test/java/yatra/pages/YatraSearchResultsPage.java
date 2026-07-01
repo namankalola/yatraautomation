@@ -1,6 +1,7 @@
 package yatra.pages;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import manager.Const;
 import utils.DateUtils;
 import utils.Element;
+import utils.Reporting;
 
 public class YatraSearchResultsPage {
 
@@ -19,14 +21,20 @@ public class YatraSearchResultsPage {
             "//div[contains(@class,'selected') and contains(@class,'flightItem') and contains(@class,'left')]//span[@class='rt-segment-price']");
     By downFare = By.xpath(
             "//div[contains(@class,'selected') and contains(@class,'flightItem') and contains(@class,'right')]//span[@class='rt-segment-price']");
-    By tatalFare = By.xpath("//*[contains(@ng-show,'flt.totalFare')]");
+    By tatalFareInternational = By.xpath("//*[contains(@ng-show,'flt.totalFare')]");
+    By tatalFareDomesticOneway = By.xpath("//p[@class='ow-price-above-btn']");
+    By totalFareRoundMultiCity = By.xpath("//p[contains(@class,'total-fare')]/following-sibling::p");
+    By flightCards = By.xpath("(//input[@type='radio']|//button[contains(.,'View Fares')]|//button[contains(.,'Selected')])/ancestor::div[contains(@class,'flightItem border-shadow pr')]");
     By modifySearchButton = By.xpath("//button/span[text()='Modify Search']");
-    By departDateInput = By.xpath("//span[text()='Date']/following-sibling::input[@name='flight_depart_date_0']");
+    By departDateInput = By.xpath("//input[@name='flight_depart_date_0']/ancestor::div[contains(@class,'depart')]");
     By returnDateInput = By.xpath("//span[text()='Return']/following-sibling::input[@name='arrivalDate_0']");
     By nextMonth = By
             .xpath("//div[contains(@class,'datepicker-inner full')]/i[@class='ytfi-arrow-right cursor-pointer']");
     By searchAgainButton = By.xpath("//button/span[text()='Search Again']");
-    By yatraCalendarModel = By.xpath("//div[@class='datepicker-inner full']");
+    By yatraCalendarModel = By.xpath(
+            "//div[contains(@class,'depart')]//div[contains(@class,'datepicker-wrapper months-2') and not(contains(@class,'ng-hide'))]//div[@class='datepicker-inner full']");
+    // By multiCityFlightCards = By
+    //         .xpath("//button[contains(text(),'Selected')]/ancestor::div[contains(@class,'flight-det')]");
 
     // Dynamic locators listed below
     By monthTitle(String month, String year) {
@@ -38,6 +46,10 @@ public class YatraSearchResultsPage {
                 + "')]/..//span[@class='full date-val' and text()='" + day + "']");
     }
 
+    By domesticDate(String date) {
+        return By.xpath("//div[contains(@class,'daymatrix')]//p[text()='" + date + "']");
+    }
+
     // Only actions definations below, no locators
 
     public YatraSearchResultsPage(WebDriver driver) {
@@ -45,7 +57,9 @@ public class YatraSearchResultsPage {
     }
 
     public boolean verifySearchResultDisplayed() {
-        return new Element(tatalFare, driver).isDisplayed(Const.LONG_WAIT);
+        boolean displayed = new Element(flightCards, driver).isDisplayed(Const.LONG_WAIT);
+        Reporting.step("Flight search result is displayed: " + displayed);
+        return displayed;
     }
 
     public String getUpJouneyFare() {
@@ -56,8 +70,18 @@ public class YatraSearchResultsPage {
         return new Element(downFare, driver).getText();
     }
 
-    public String getTotalFare() {
-        return new Element(tatalFare, driver).getText();
+    public String getTotalFare(String tripType) {
+        String totalFare = "";
+        if (tripType.equalsIgnoreCase("OneWay_Domestic"))
+            totalFare = new Element(tatalFareDomesticOneway, driver).getText();
+        else if (tripType.equalsIgnoreCase("OneWay_International") || tripType.equalsIgnoreCase("RoundTrip_International")
+                || tripType.equalsIgnoreCase("MultiCity_International"))
+            totalFare = new Element(tatalFareInternational, driver).getText();
+        else if (tripType.equalsIgnoreCase("RoundTrip_Domestic") || tripType.equalsIgnoreCase("MultiCity_Domestic"))
+            totalFare = new Element(totalFareRoundMultiCity, driver).getText();
+
+        Reporting.step("Current fare for trip :" + tripType + " is :" + totalFare);
+        return totalFare;
     }
 
     public void clickModifySearchButton() {
@@ -74,7 +98,7 @@ public class YatraSearchResultsPage {
         new Element(searchAgainButton, driver).click();
     }
 
-    public Map<String, Double> getFareForNextNDays(String dateStr, int days) {
+    public Map<String, Double> getFareForNextNDays(String dateStr, int days, String tripType) {
         Map<String, Double> fares = new HashMap<String, Double>();
         String dates = new DateUtils().resolveDate(dateStr);
         for (int i = 1; i <= days; i++) {
@@ -90,11 +114,11 @@ public class YatraSearchResultsPage {
             clickDate(day, month, year);
             clickSearchAgainButton();
             verifySearchResultDisplayed();
-            String fare = getTotalFare();
-            fares.put(departDate, Double.parseDouble(fare.replaceAll(",", "")));
+            String fare = getTotalFare(tripType);
+            fares.put(departDate, Double.parseDouble(fare.replaceAll("[^\\d.]", "")));
 
         }
-        System.out.println(fares.toString());
+        Reporting.step("Fetching fares for next " + days + " days and fares are :" + fares.toString());
         return fares;
     }
 
@@ -118,4 +142,42 @@ public class YatraSearchResultsPage {
     private void clickDate(String day, String month, String year) {
         new Element(dateOfTheMonth(day, month, year), driver).click();
     }
+
+    public Map<String, Double> getDomesticFareForNextNDays(String dateStr, int days) {
+        Map<String, Double> fares = new HashMap<String, Double>();
+        String dates = new DateUtils().resolveDate(dateStr);
+        for (int i = 1; i <= days; i++) {
+            String departDate = new DateUtils().addDaysToDate(dates, i);
+            LocalDate date = new DateUtils().parseDate(departDate);
+            String dd = date.getDayOfMonth() + "";
+            String mmm = new DateUtils().getMonthMMM(date);
+            String ddd = new DateUtils().getDayOfTheWeekDDD(date);
+            String day = ddd + ", " + dd + " " + mmm;
+            clickDate(day);
+            verifySearchResultDisplayed();
+            String fare = getTotalFare("Domestic").replaceAll("[^\\d.]", "");
+            fares.put(departDate, Double.parseDouble(fare));
+
+        }
+        Reporting.step("Fetching fares for next " + days + " days and fares are :" + fares.toString());
+        return fares;
+    }
+
+    public void clickDate(String date) {
+        new Element(domesticDate(date), driver).click();
+    }
+
+    public Double lowestFare(Map<String, Double> fares) {
+        List<Map.Entry<String, Double>> list = new ArrayList<>(fares.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+        Reporting
+                .step("Lowest fare for the departure date: " + list.get(0).getKey() + "is : " + list.get(0).getValue());
+        return list.get(0).getValue();
+    }
+
+    // public boolean verifyResultDisplayedForMultiCitySearch() {
+    //     boolean displayed = new Element(flightCards, driver).isDisplayed(Const.LONG_WAIT);
+    //     Reporting.step("Flight search result is displayed: " + displayed);
+    //     return displayed;
+    // }
 }

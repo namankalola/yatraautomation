@@ -3,19 +3,34 @@
 <suite name="Suite" parallel="tests" thread-count="2">
 
 	<test name="Chrome">
-		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="browser" value="chrome" />
+		<groups>
+			<run>
+				<include name="Smoke" />
+			</run>
+		</groups>
 		<classes>
 			<class name="yatra.testcases.YatraSearchFlights" />
 		</classes>
 	</test>
 	<test name="firefox">
-		<parameter name="browser" value="firefox"></parameter>
+		<parameter name="browser" value="firefox" />
+		<groups>
+			<run>
+				<include name="Regression" />
+			</run>
+		</groups>
 		<classes>
 			<class name="yatra.testcases.YatraSearchFlights" />
 		</classes>
 	</test>
 	<test name="edge">
-		<parameter name="browser" value="edge"></parameter>
+		<parameter name="browser" value="edge" />
+		<groups>
+			<run>
+				<include name="Release1.1" />
+			</run>
+		</groups>
 		<classes>
 			<class name="yatra.testcases.YatraSearchFlights" />
 		</classes>
