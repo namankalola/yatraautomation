@@ -2,6 +2,7 @@ package yatra.pages;
 
 import java.time.LocalDate;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import manager.Const;
 import utils.DateUtils;
@@ -28,6 +29,7 @@ public class YatraHomePage {
     By multiCityFromInput = By.xpath("//label[text()='From']/..//input");
     By multiCityToLabel = By.xpath("//div[contains(@aria-label,'To')]");
     By multiCityToInput = By.xpath("//label[text()='To']/..//input");
+    By addAnotherCityButton = By.xpath("//button[text()='+ Add Another City']");
 
     // Dynamic locators listed below
     By navigation(String nav) {
@@ -48,13 +50,14 @@ public class YatraHomePage {
                 + "') and contains(.,'" + year +
                 "')]]//div[contains(@aria-label,'Choose')]/span[contains(text(),'"
                 + day + "')]");
+    }
 
-        // return
-        // By.xpath("//div[@class='react-datepicker__month-container'][.//span[contains(.,'"
-        // + month
-        // + "') and contains(.,'" + year + "')]]//div[contains(@aria-label,'Choose')
-        // and contains(@aria-label,'"
-        // + month + " " + day + "')]");
+    By dateOfTheMonth(String day, String month, String year, String date) {
+        String xpath = "//div[@aria-label='Choose " + date + "']";
+        return By.xpath("//div[@class='react-datepicker__month-container'][.//span[contains(.,'"
+                + month
+                + "') and contains(.,'" + year + "')]]//div[@aria-label='Choose " + date + "']");
+
     }
 
     By adultTraveller(int adults) {
@@ -134,6 +137,7 @@ public class YatraHomePage {
     private void selectDate(String departDate) {
         departDate = new DateUtils().resolveDate(departDate);
         LocalDate date = new DateUtils().parseDate(departDate);
+        String formattedDate = new DateUtils().getFormattedDateWithSuffix(date);
         // String day = new DateUtils().getDay(date) + "";
         String day = new DateUtils().getDay(date) + "";
         String year = date.getYear() + "";
@@ -141,8 +145,7 @@ public class YatraHomePage {
         // Navigate to Month by clicking Next button
         navigateToMonth(month, year);
         // Select Date for the Month
-        clickDate(day, month, year);
-
+        clickDate(day, month, year, formattedDate);
     }
 
     private void navigateToMonth(String month, String year) {
@@ -158,8 +161,12 @@ public class YatraHomePage {
         return false;
     }
 
-    private void clickDate(String day, String month, String year) {
-        new Element(dateOfTheMonth(day, month, year), driver).click();
+    // private void clickDate(String day, String month, String year) {
+    //     new Element(dateOfTheMonth(day, month, year), driver).click();
+    // }
+
+    private void clickDate(String day, String month, String year, String date) {
+        new Element(dateOfTheMonth(day, month, year, date), driver).click();
     }
 
     public void selectTravellersAndCabinClass(String travellers, String travelClass) {
@@ -197,21 +204,21 @@ public class YatraHomePage {
     // Multi City Scenario
 
     public void setMultiCityFrom(String city, int leg) {
-        new Element(multiCityfromLabel, driver).getElementsList().get(leg).click();
+        new Element(multiCityfromLabel, driver).clickElementFromList(leg);
         new Element(multiCityFromInput, driver).enterText(city);
         new Element(city(city), driver).click();
         Reporting.step("Entering Multi City flight details — From City : " + leg + " with city : " + city);
     }
 
     public void setMultiCityTo(String city, int leg) {
-        new Element(multiCityToLabel, driver).getElementsList().get(leg).click();
+        new Element(multiCityToLabel, driver).clickElementFromList(leg);
         new Element(multiCityToInput, driver).enterText(city);
         new Element(city(city), driver).click();
         Reporting.step("Entering Multi City flight details — Destination City : " + leg + " with city : " + city);
     }
 
     public void selectMultiCityDepartureDate(String departDate, int leg) {
-        new Element(departureDate, driver).getElementsList().get(leg).click();
+        new Element(departureDate, driver).clickElementFromList(leg);
         if (!new Element(yatraCalendarModel, driver).isDisplayed(Const.SHORT_WAIT))
             new Element(departureDate, driver).click();
         selectDate(departDate);
@@ -221,6 +228,23 @@ public class YatraHomePage {
 
     public void clickTripTypeRadio(String tripType) {
         // new Element(tripTypeRadio(tripType), driver).click();
-        new Element(By.cssSelector("input[value='M']"), driver).click();
+        new Element(By.xpath("//label[@aria-label='Multi City']"), driver).click();
+    }
+
+    public void clickAddAnotherCityButton() {
+        new Element(addAnotherCityButton, driver).click();
+    }
+
+    public void disableWebPopups() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        js.executeScript(
+                "document.getElementById('webpush-onsite')?.remove();");
+    }
+
+    public void disableNotificationPopup() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript(
+                "document.getElementById('webklipper-publisher-widget-container-notification-frame')?.remove();");
     }
 }

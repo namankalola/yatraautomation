@@ -21,9 +21,10 @@ public class YatraSearchResultsPage {
             "//div[contains(@class,'selected') and contains(@class,'flightItem') and contains(@class,'left')]//span[@class='rt-segment-price']");
     By downFare = By.xpath(
             "//div[contains(@class,'selected') and contains(@class,'flightItem') and contains(@class,'right')]//span[@class='rt-segment-price']");
-    By tatalFare = By.xpath("//*[contains(@ng-show,'flt.totalFare')]");
-    By tatalFareDomestic = By.xpath("//p[@class='ow-price-above-btn']");
-    By flightCards = By.xpath("//button[contains(text(),'View Fares')]/ancestor::div[contains(@class,'flight-det')]");
+    By tatalFareInternational = By.xpath("//*[contains(@ng-show,'flt.totalFare')]");
+    By tatalFareDomesticOneway = By.xpath("//p[@class='ow-price-above-btn']");
+    By totalFareRoundMultiCity = By.xpath("//p[contains(@class,'total-fare')]/following-sibling::p");
+    By flightCards = By.xpath("(//input[@type='radio']|//button[contains(.,'View Fares')]|//button[contains(.,'Selected')])/ancestor::div[contains(@class,'flightItem border-shadow pr')]");
     By modifySearchButton = By.xpath("//button/span[text()='Modify Search']");
     By departDateInput = By.xpath("//input[@name='flight_depart_date_0']/ancestor::div[contains(@class,'depart')]");
     By returnDateInput = By.xpath("//span[text()='Return']/following-sibling::input[@name='arrivalDate_0']");
@@ -32,8 +33,8 @@ public class YatraSearchResultsPage {
     By searchAgainButton = By.xpath("//button/span[text()='Search Again']");
     By yatraCalendarModel = By.xpath(
             "//div[contains(@class,'depart')]//div[contains(@class,'datepicker-wrapper months-2') and not(contains(@class,'ng-hide'))]//div[@class='datepicker-inner full']");
-    By multiCityFlightCards = By
-            .xpath("//button[contains(text(),'Selected')]/ancestor::div[contains(@class,'flight-det')]");
+    // By multiCityFlightCards = By
+    //         .xpath("//button[contains(text(),'Selected')]/ancestor::div[contains(@class,'flight-det')]");
 
     // Dynamic locators listed below
     By monthTitle(String month, String year) {
@@ -71,12 +72,15 @@ public class YatraSearchResultsPage {
 
     public String getTotalFare(String tripType) {
         String totalFare = "";
-        if (tripType.contains("Domestic"))
-            totalFare = new Element(tatalFareDomestic, driver).getText();
-        else
-            totalFare = new Element(tatalFare, driver).getText();
+        if (tripType.equalsIgnoreCase("OneWay_Domestic"))
+            totalFare = new Element(tatalFareDomesticOneway, driver).getText();
+        else if (tripType.equalsIgnoreCase("OneWay_International") || tripType.equalsIgnoreCase("RoundTrip_International")
+                || tripType.equalsIgnoreCase("MultiCity_International"))
+            totalFare = new Element(tatalFareInternational, driver).getText();
+        else if (tripType.equalsIgnoreCase("RoundTrip_Domestic") || tripType.equalsIgnoreCase("MultiCity_Domestic"))
+            totalFare = new Element(totalFareRoundMultiCity, driver).getText();
 
-        Reporting.step("Current fare for departure date: " + totalFare);
+        Reporting.step("Current fare for trip :" + tripType + " is :" + totalFare);
         return totalFare;
     }
 
@@ -171,9 +175,9 @@ public class YatraSearchResultsPage {
         return list.get(0).getValue();
     }
 
-    public boolean verifyResultDisplayedForMultiCitySearch() {
-        boolean displayed = new Element(multiCityFlightCards, driver).isDisplayed(Const.LONG_WAIT);
-        Reporting.step("Flight search result is displayed: " + displayed);
-        return displayed;
-    }
+    // public boolean verifyResultDisplayedForMultiCitySearch() {
+    //     boolean displayed = new Element(flightCards, driver).isDisplayed(Const.LONG_WAIT);
+    //     Reporting.step("Flight search result is displayed: " + displayed);
+    //     return displayed;
+    // }
 }

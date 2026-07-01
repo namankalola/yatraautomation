@@ -107,4 +107,36 @@ public class DateUtils {
         LocalDate localDate = LocalDate.parse(date, formatter);
         return localDate.plusDays(days).format(formatter);
     }
+
+    public String getFormattedDateWithSuffix(LocalDate date) {
+        String formattedDate = date.format(
+                DateTimeFormatter.ofPattern("EEEE, MMMM "))
+                + getDayWithSuffix(date.getDayOfMonth())
+                + date.format(DateTimeFormatter.ofPattern(", yyyy"));
+        return formattedDate;
+    }
+
+    private static String getDayWithSuffix(int day) {
+        if (day >= 11 && day <= 13) {
+            return day + "th";
+        }
+
+        return switch (day % 10) {
+            case 1 -> day + "st";
+            case 2 -> day + "nd";
+            case 3 -> day + "rd";
+            default -> day + "th";
+        };
+    }
+
+    public static void main(String[] args) {
+        LocalDate date = LocalDate.of(2026, 7, 1);
+
+        String formattedDate = date.format(
+                DateTimeFormatter.ofPattern("EEEE, MMMM "))
+                + getDayWithSuffix(date.getDayOfMonth())
+                + date.format(DateTimeFormatter.ofPattern(", yyyy"));
+
+        System.out.println(formattedDate);
+    }
 }

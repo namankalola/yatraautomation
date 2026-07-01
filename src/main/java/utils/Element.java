@@ -3,6 +3,7 @@ package utils;
 import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -38,7 +39,7 @@ public class Element {
             js.executeScript("arguments[0].click();", element);
             Reporting.info("Element clicked using Javascript executor: " + by.toString());
         }
-        
+
     }
 
     public void click(int index) {
@@ -103,5 +104,21 @@ public class Element {
 
     public String getText() {
         return getElementByWaitPolling(Const.LONG_WAIT).getText();
+    }
+
+    public void clickElementFromList(int index) {
+        try {
+            wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by)).get(index).click();
+            Reporting.info("Element Clicked from the list : " + by);
+        } catch (ElementClickInterceptedException e) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript(
+                    "document.getElementById('webpush-onsite')?.remove();");
+            js.executeScript(
+                    "document.getElementById('webklipper-publisher-widget-container-notification-frame')?.remove();");
+
+            wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by)).get(index).click();
+            Reporting.info("ElementClickInterceptedException - Element Clicked from the list : " + by);
+        }
     }
 }
