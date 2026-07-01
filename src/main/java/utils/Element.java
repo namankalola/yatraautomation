@@ -27,28 +27,37 @@ public class Element {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(Const.LONG_WAIT));
     }
 
+    // Click was swallowing almost all exption, Catch is now refined and narrowed
+    // down to specific exceptions. JS click is used as a fallback for
+    // ElementClickInterceptedException. StaleElementReferenceException is handled
+    // by refreshing the reference and retrying the click.
     public void click() {
-        WebElement element = null;
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
         try {
-            element = wait.until(ExpectedConditions.elementToBeClickable(by));
             element.click();
             Reporting.info("Element clicked : " + by.toString());
-        } catch (Exception e) {
-            element = getElement(5);
+        } catch (ElementClickInterceptedException e) {
+            Reporting.warn("Normal click intercepted. Falling back to JS click.");
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].click();", element);
             Reporting.info("Element clicked using Javascript executor: " + by.toString());
+        } catch (StaleElementReferenceException e) {
+            Reporting.warn("StaleElementReferenceException encountered. Retrying click.");
+            element = wait.until(ExpectedConditions.elementToBeClickable(by));
+            element.click();
+            Reporting.info("Element clicked after refreshing reference: " + by.toString());
         }
 
     }
 
     public void click(int index) {
-        List<WebElement> elements = driver.findElements(by);
-        if (elements.size() <= index) {
-            throw new RuntimeException("Element index " + index + " not found for locator : " + by);
+        List<WebElement> elements = getElementsList();
+        if (index >= elements.size()) {
+            throw new IndexOutOfBoundsException(
+                    "Requested index " + index + " but only " + elements.size() + " elements found for locator: " + by);
         }
         elements.get(index).click();
-        Reporting.info("Clicked element index " + index + " for locator : " + by);
+        Reporting.info("Clicked element at index " + index);
     }
 
     public WebElement getElement(int seconds) {
@@ -61,7 +70,7 @@ public class Element {
     }
 
     public void enterText(String text) {
-        getElement(30).sendKeys(text);
+        getElement(Const.LONG_WAIT).sendKeys(text);
         Reporting.info(text + ": Text entered in element : " + by);
     }
 
@@ -91,8 +100,8 @@ public class Element {
     }
 
     public List<WebElement> getElementsList() {
-        List<WebElement> list = driver.findElements(by);
-        Reporting.info(list.size() + " : Element found for the locator : " + by);
+        List<WebElement> list = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
+        Reporting.info(list.size() + " elements found for locator: " + by);
         return list;
     }
 
@@ -103,7 +112,12 @@ public class Element {
     }
 
     public String getText() {
-        return getElementByWaitPolling(Const.LONG_WAIT).getText();
+        try {
+            return getElementByWaitPolling(Const.LONG_WAIT).getText();
+        } catch (StaleElementReferenceException e) {
+            Reporting.warn("StaleElementReferenceException encountered while getting text. Retrying.");
+            return getElementByWaitPolling(Const.LONG_WAIT).getText();
+        }
     }
 
     public void clickElementFromList(int index) {

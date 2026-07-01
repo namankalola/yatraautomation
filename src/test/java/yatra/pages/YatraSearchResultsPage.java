@@ -8,94 +8,96 @@ import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import manager.Const;
 import utils.DateUtils;
-import utils.Element;
 import utils.Reporting;
 
-public class YatraSearchResultsPage {
+public class YatraSearchResultsPage extends BasePage {
 
-    private final WebDriver driver;
-    By upFare = By.xpath(
+    // private final WebDriver driver;
+    private By upFare = By.xpath(
             "//div[contains(@class,'selected') and contains(@class,'flightItem') and contains(@class,'left')]//span[@class='rt-segment-price']");
-    By downFare = By.xpath(
+    private By downFare = By.xpath(
             "//div[contains(@class,'selected') and contains(@class,'flightItem') and contains(@class,'right')]//span[@class='rt-segment-price']");
-    By tatalFareInternational = By.xpath("//*[contains(@ng-show,'flt.totalFare')]");
-    By tatalFareDomesticOneway = By.xpath("//p[@class='ow-price-above-btn']");
-    By totalFareRoundMultiCity = By.xpath("//p[contains(@class,'total-fare')]/following-sibling::p");
-    By flightCards = By.xpath("(//input[@type='radio']|//button[contains(.,'View Fares')]|//button[contains(.,'Selected')])/ancestor::div[contains(@class,'flightItem border-shadow pr')]");
-    By modifySearchButton = By.xpath("//button/span[text()='Modify Search']");
-    By departDateInput = By.xpath("//input[@name='flight_depart_date_0']/ancestor::div[contains(@class,'depart')]");
-    By returnDateInput = By.xpath("//span[text()='Return']/following-sibling::input[@name='arrivalDate_0']");
-    By nextMonth = By
+    private By tatalFareInternational = By.xpath("//*[contains(@ng-show,'flt.totalFare')]");
+    private By tatalFareDomesticOneway = By.xpath("//p[@class='ow-price-above-btn']");
+    private By totalFareRoundMultiCity = By.xpath("//p[contains(@class,'total-fare')]/following-sibling::p");
+    private By flightCards = By.xpath(
+            "(//input[@type='radio']|//button[contains(.,'View Fares')]|//button[contains(.,'Selected')])/ancestor::div[contains(@class,'flightItem border-shadow pr')]");
+    private By modifySearchButton = By.xpath("//button/span[text()='Modify Search']");
+    private By departDateInput = By
+            .xpath("//input[@name='flight_depart_date_0']/ancestor::div[contains(@class,'depart')]");
+    // private By returnDateInput =
+    // By.xpath("//span[text()='Return']/following-sibling::input[@name='arrivalDate_0']");
+    private By nextMonth = By
             .xpath("//div[contains(@class,'datepicker-inner full')]/i[@class='ytfi-arrow-right cursor-pointer']");
-    By searchAgainButton = By.xpath("//button/span[text()='Search Again']");
-    By yatraCalendarModel = By.xpath(
+    private By searchAgainButton = By.xpath("//button/span[text()='Search Again']");
+    private By yatraCalendarModel = By.xpath(
             "//div[contains(@class,'depart')]//div[contains(@class,'datepicker-wrapper months-2') and not(contains(@class,'ng-hide'))]//div[@class='datepicker-inner full']");
     // By multiCityFlightCards = By
-    //         .xpath("//button[contains(text(),'Selected')]/ancestor::div[contains(@class,'flight-det')]");
+    // .xpath("//button[contains(text(),'Selected')]/ancestor::div[contains(@class,'flight-det')]");
 
     // Dynamic locators listed below
-    By monthTitle(String month, String year) {
+    private By monthTitle(String month, String year) {
         return By.xpath("//div[@class='month-name full' and contains(text(),'" + month + " " + year + "')]");
     }
 
-    By dateOfTheMonth(String day, String month, String year) {
+    private By dateOfTheMonth(String day, String month, String year) {
         return By.xpath("//div[@class='month-name full' and contains(text(),'" + month + " " + year
                 + "')]/..//span[@class='full date-val' and text()='" + day + "']");
     }
 
-    By domesticDate(String date) {
+    private By domesticDate(String date) {
         return By.xpath("//div[contains(@class,'daymatrix')]//p[text()='" + date + "']");
     }
 
     // Only actions definations below, no locators
 
     public YatraSearchResultsPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public boolean verifySearchResultDisplayed() {
-        boolean displayed = new Element(flightCards, driver).isDisplayed(Const.LONG_WAIT);
+        boolean displayed = element(flightCards).isDisplayed(Const.LONG_WAIT);
         Reporting.step("Flight search result is displayed: " + displayed);
         return displayed;
     }
 
-    public String getUpJouneyFare() {
-        return new Element(upFare, driver).getText();
+    public Double getUpJouneyFare() {
+        return Double.parseDouble(element(upFare).getText().replaceAll("[^\\d.]", ""));
     }
 
-    public String getReturnJouneyFare() {
-        return new Element(downFare, driver).getText();
+    public Double getReturnJouneyFare() {
+        return Double.parseDouble(element(downFare).getText().replaceAll("[^\\d.]", ""));
     }
 
-    public String getTotalFare(String tripType) {
-        String totalFare = "";
+    public Double getTotalFare(String tripType) {
+        Double totalFare = 0.0;
         if (tripType.equalsIgnoreCase("OneWay_Domestic"))
-            totalFare = new Element(tatalFareDomesticOneway, driver).getText();
-        else if (tripType.equalsIgnoreCase("OneWay_International") || tripType.equalsIgnoreCase("RoundTrip_International")
+            totalFare = Double.parseDouble(element(tatalFareDomesticOneway).getText().replaceAll("[^\\d.]", ""));
+        else if (tripType.equalsIgnoreCase("OneWay_International")
+                || tripType.equalsIgnoreCase("RoundTrip_International")
                 || tripType.equalsIgnoreCase("MultiCity_International"))
-            totalFare = new Element(tatalFareInternational, driver).getText();
+            totalFare = Double.parseDouble(element(tatalFareInternational).getText().replaceAll("[^\\d.]", ""));
         else if (tripType.equalsIgnoreCase("RoundTrip_Domestic") || tripType.equalsIgnoreCase("MultiCity_Domestic"))
-            totalFare = new Element(totalFareRoundMultiCity, driver).getText();
+            totalFare = Double.parseDouble(element(totalFareRoundMultiCity).getText().replaceAll("[^\\d.]", ""));
 
         Reporting.step("Current fare for trip :" + tripType + " is :" + totalFare);
         return totalFare;
     }
 
     public void clickModifySearchButton() {
-        new Element(modifySearchButton, driver).click();
+        element(modifySearchButton).click();
     }
 
     public void clickDepartDate() {
-        new Element(departDateInput, driver).click();
-        if (!new Element(yatraCalendarModel, driver).isDisplayed(Const.SHORT_WAIT))
-            new Element(departDateInput, driver).click();
+        element(departDateInput).click();
+        if (!element(yatraCalendarModel).isDisplayed(Const.SHORT_WAIT))
+            element(departDateInput).click();
     }
 
     public void clickSearchAgainButton() {
-        new Element(searchAgainButton, driver).click();
+        element(searchAgainButton).click();
     }
 
     public Map<String, Double> getFareForNextNDays(String dateStr, int days, String tripType) {
@@ -114,9 +116,8 @@ public class YatraSearchResultsPage {
             clickDate(day, month, year);
             clickSearchAgainButton();
             verifySearchResultDisplayed();
-            String fare = getTotalFare(tripType);
-            fares.put(departDate, Double.parseDouble(fare.replaceAll("[^\\d.]", "")));
-
+            Double fare = getTotalFare(tripType);
+            fares.put(departDate, fare);
         }
         Reporting.step("Fetching fares for next " + days + " days and fares are :" + fares.toString());
         return fares;
@@ -124,7 +125,7 @@ public class YatraSearchResultsPage {
 
     private void navigateToMonth(String month, String year) {
         while (!isMonthVisible(month, year)) {
-            List<WebElement> elements = new Element(nextMonth, driver).getElementsList();
+            List<WebElement> elements = element(nextMonth).getElementsList();
             for (WebElement we : elements) {
                 if (we.isDisplayed())
                     we.click();
@@ -133,14 +134,14 @@ public class YatraSearchResultsPage {
     }
 
     private boolean isMonthVisible(String month, String year) {
-        if (new Element(monthTitle(month, year), driver).getElementsList()
+        if (element(monthTitle(month, year)).getElementsList()
                 .size() > 0)
             return true;
         return false;
     }
 
     private void clickDate(String day, String month, String year) {
-        new Element(dateOfTheMonth(day, month, year), driver).click();
+        element(dateOfTheMonth(day, month, year)).click();
     }
 
     public Map<String, Double> getDomesticFareForNextNDays(String dateStr, int days) {
@@ -155,8 +156,8 @@ public class YatraSearchResultsPage {
             String day = ddd + ", " + dd + " " + mmm;
             clickDate(day);
             verifySearchResultDisplayed();
-            String fare = getTotalFare("Domestic").replaceAll("[^\\d.]", "");
-            fares.put(departDate, Double.parseDouble(fare));
+            Double fare = getTotalFare("Domestic");
+            fares.put(departDate, fare);
 
         }
         Reporting.step("Fetching fares for next " + days + " days and fares are :" + fares.toString());
@@ -164,7 +165,7 @@ public class YatraSearchResultsPage {
     }
 
     public void clickDate(String date) {
-        new Element(domesticDate(date), driver).click();
+        element(domesticDate(date)).click();
     }
 
     public Double lowestFare(Map<String, Double> fares) {
@@ -176,8 +177,9 @@ public class YatraSearchResultsPage {
     }
 
     // public boolean verifyResultDisplayedForMultiCitySearch() {
-    //     boolean displayed = new Element(flightCards, driver).isDisplayed(Const.LONG_WAIT);
-    //     Reporting.step("Flight search result is displayed: " + displayed);
-    //     return displayed;
+    // boolean displayed = element(flightCards,
+    // driver).isDisplayed(Const.LONG_WAIT);
+    // Reporting.step("Flight search result is displayed: " + displayed);
+    // return displayed;
     // }
 }

@@ -12,7 +12,7 @@ import yatra.pages.YatraHomePage;
 import yatra.pages.YatraSearchResultsPage;
 
 /**
- * Test Class: YatraSearchFlights
+ * Test Class: YatraSearchFlightsOptimized
  *
  * Purpose:
  * Validates the end-to-end flight search functionality on Yatra and
@@ -48,7 +48,7 @@ import yatra.pages.YatraSearchResultsPage;
  * Version: 1.0
  */
 
-public class YatraSearchFlights extends Base {
+public class YatraSearchFlightsOptimized extends Base {
         YatraHomePage yatraHomePage;
         YatraSearchResultsPage yatraSearchResultsPage;
 
@@ -74,74 +74,36 @@ public class YatraSearchFlights extends Base {
 
         @Test(description = "DataDriven_Yatra - Search flight and get cheapest flight for given n days", dataProvider = "internationalFlightSearch", dataProviderClass = FlightSearchDataProvider.class, groups = "Smoke")
         public void search_international_round_trip_flight_datadriven(String testID) {
-
-                String sheet = "Journey";
-                String daysToCheck = Excels.getValue(sheet, testID, "daysToCheck");
-                String from = Excels.getValue(sheet, testID, "From");
-                String to = Excels.getValue(sheet, testID, "To");
-                String departure = Excels.getValue(sheet, testID, "Departure");
-                String returnDate = Excels.getValue(sheet, testID, "Return");
-                String tripType = Excels.getValue(sheet, testID, "TripType");
-                sheet = "Travellers";
-                String travellers = Excels.getValue(sheet, testID, "Adults") + ","
-                                + Excels.getValue(sheet, testID, "Children")
-                                + "," + Excels.getValue(sheet, testID, "Infants");
-                String cabinClass = Excels.getValue(sheet, testID, "cabinClass");
-
-                yatraHomePage = new YatraHomePage(driver);
-                yatraHomePage.navigateTo(Const.YATRA_BASE_URL);
-                yatraSearchResultsPage = new YatraSearchResultsPage(driver);
-                yatraHomePage.disableWebPopups();
-                yatraHomePage.disableNotificationPopup();
-                yatraHomePage.setFromCity(from);
-                yatraHomePage.setToCity(to);
-                yatraHomePage.selectDepartureDate(departure);
-                yatraHomePage.selectReturnDate(returnDate);
-                yatraHomePage.selectTravellersAndCabinClass(travellers, cabinClass);
-                yatraHomePage.clickSearch();
-                Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed(),
-                                "Search results not displayed for route: " + from + " → " + to);
-                yatraSearchResultsPage.getTotalFare("International");
-                yatraSearchResultsPage.lowestFare(yatraSearchResultsPage.getFareForNextNDays(departure,
-                                Integer.parseInt(daysToCheck), tripType));
-
+                flightSearchAndGetCheapestFare(testID, "round");
         }
 
         @Test(description = "FL001_Yatra - Search One Way Flight and get cheapest flight for given n days", groups = {
                         "Regression" })
         public void search_one_way_flight() {
                 String testID = "FL001";
-                String sheet = "Journey";
-                String daysToCheck = Excels.getValue(sheet, testID, "daysToCheck");
-                String from = Excels.getValue(sheet, testID, "From");
-                String to = Excels.getValue(sheet, testID, "To");
-                String departure = Excels.getValue(sheet, testID, "Departure");
-                String tripType = Excels.getValue(sheet, testID, "TripType");
-                sheet = "Travellers";
-                String travellers = Excels.getValue(sheet, testID, "Adults") + ","
-                                + Excels.getValue(sheet, testID, "Children")
-                                + "," + Excels.getValue(sheet, testID, "Infants");
-                String cabinClass = Excels.getValue(sheet, testID, "cabinClass");
-                yatraHomePage = new YatraHomePage(driver);
-                yatraHomePage.navigateTo(Const.YATRA_BASE_URL);
-                yatraSearchResultsPage = new YatraSearchResultsPage(driver);
-                yatraHomePage.setFromCity(from);
-                yatraHomePage.setToCity(to);
-                yatraHomePage.selectDepartureDate(departure);
-                yatraHomePage.selectTravellersAndCabinClass(travellers, cabinClass);
-                yatraHomePage.clickSearch();
-                Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed(),
-                                "Search results not displayed for route: " + from + " → " + to);
-                yatraSearchResultsPage.getTotalFare(tripType);
-                yatraSearchResultsPage.lowestFare(yatraSearchResultsPage.getFareForNextNDays(departure,
-                                Integer.parseInt(daysToCheck), tripType));
-
+                flightSearchAndGetCheapestFare(testID, "oneway");
         }
 
         @Test(description = "FL002_Yatra - Search_Round_Trip_Flight and get cheapest flight for given n days", groups = {
                         "Regression" })
         public void search_round_trip_flight() {
                 String testID = "FL002";
+                flightSearchAndGetCheapestFare(testID, "round");
+        }
+
+        @Test(description = "FL003_Search_Multi_City_Domestic_Flight", groups = { "Release1.1" })
+        public void search_multi_city_domestic_flight() {
+                String testID = "FL003";
+                searchMultiCityFlightAndGetCheapestFare(testID);
+        }
+
+        @Test(description = "FL004_Search_Multi_City_Domestic_Flight", groups = { "Release1.1" })
+        public void search_multi_city_international_flight() {
+                String testID = "FL004";
+                searchMultiCityFlightAndGetCheapestFare(testID);
+        }
+
+        private void flightSearchAndGetCheapestFare(String testID, String trip) {
                 String sheet = "Journey";
                 String daysToCheck = Excels.getValue(sheet, testID, "daysToCheck");
                 String from = Excels.getValue(sheet, testID, "From");
@@ -159,7 +121,8 @@ public class YatraSearchFlights extends Base {
                 yatraHomePage.setFromCity(from);
                 yatraHomePage.setToCity(to);
                 yatraHomePage.selectDepartureDate(departure);
-                yatraHomePage.selectReturnDate(returnDate);
+                if (trip.equalsIgnoreCase("round"))
+                        yatraHomePage.selectReturnDate(returnDate);
                 yatraHomePage.selectTravellersAndCabinClass(travellers, Excels.getValue(sheet, testID, "cabinClass"));
                 yatraHomePage.clickSearch();
                 Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed(),
@@ -169,55 +132,16 @@ public class YatraSearchFlights extends Base {
                                 Integer.parseInt(daysToCheck), tripType));
         }
 
-        @Test(description = "FL003_Search_Multi_City_Domestic_Flight", groups = { "Release1.1" })
-        public void search_multi_city_domestic_flight() {
-                String testID = "FL003";
-                String tripType = null;
-                String sheet = "Travellers";
+        private void searchMultiCityFlightAndGetCheapestFare(String testID) {
+                String sheet = "Journey";
+                String daysToCheck = Excels.getValue(sheet, testID, "daysToCheck");
+                String tripType = Excels.getValue(sheet, testID, "TripType");
+                sheet = "Travellers";
                 String travellers = Excels.getValue(sheet, testID, "Adults") + ","
                                 + Excels.getValue(sheet, testID, "Children")
                                 + "," + Excels.getValue(sheet, testID, "Infants");
-
                 yatraHomePage = new YatraHomePage(driver);
                 yatraHomePage.navigateTo(Const.YATRA_BASE_URL);
-                yatraHomePage.disableWebPopups();
-                yatraSearchResultsPage = new YatraSearchResultsPage(driver);
-
-                List<Map<String, String>> testData = Excels.getRowsForTest("Journey", testID);
-                if (testData.size() > 1) {
-                        yatraHomePage.clickTripTypeRadio("Multi City");
-                        tripType = testData.get(0).get("TripType");
-                }
-                for (Map<String, String> map : testData) {
-                        int leg = Integer.parseInt(map.get("Leg")) - 1;
-                        if (leg >= 2)
-                                yatraHomePage.clickAddAnotherCityButton();
-                        yatraHomePage.setMultiCityFrom(map.get("From"), leg);
-                        yatraHomePage.setMultiCityTo(map.get("To"), leg);
-                        yatraHomePage.selectMultiCityDepartureDate(map.get("Departure"), leg);
-                }
-
-                yatraHomePage.selectTravellersAndCabinClass(travellers,
-                                Excels.getValue(sheet, testID, "cabinClass"));
-                yatraHomePage.clickSearch();
-                Assert.assertTrue(yatraSearchResultsPage.verifySearchResultDisplayed(),
-                                "Search results not displayed for selected route");
-                yatraSearchResultsPage.getTotalFare(tripType);
-
-        }
-
-        @Test(description = "FL004_Search_Multi_City_Domestic_Flight", groups = { "Release1.1" })
-        public void search_multi_city_international_flight() {
-                String testID = "FL004";
-                String tripType = null;
-                String sheet = "Travellers";
-                String travellers = Excels.getValue(sheet, testID, "Adults") + ","
-                                + Excels.getValue(sheet, testID, "Children")
-                                + "," + Excels.getValue(sheet, testID, "Infants");
-
-                yatraHomePage = new YatraHomePage(driver);
-                yatraHomePage.navigateTo(Const.YATRA_BASE_URL);
-                yatraHomePage.disableWebPopups();
                 yatraSearchResultsPage = new YatraSearchResultsPage(driver);
 
                 List<Map<String, String>> testData = Excels.getRowsForTest("Journey", testID);
